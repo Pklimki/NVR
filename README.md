@@ -1,9 +1,9 @@
 # NVR
 
-[![Build Status](https://navertica.visualstudio.com/BusinessCentral/_apis/build/status%2FAquashield%2FMaster%2FAquashieldAmazonVendorCentralConnector%20Master?repoName=AquashieldAmazonVendorCentralConnector&branchName=master)](https://navertica.visualstudio.com/BusinessCentral/_build/latest?definitionId=675&repoName=AquashieldAmazonVendorCentralConnector&branchName=master)
-
-
-AquaShield [![Build Status](https://navertica.visualstudio.com/BusinessCentral/_apis/build/status%2FAquashield%2FRelease%2FAquashieldAccruals%20Release?repoName=AquashieldAccruals&branchName=master)](https://navertica.visualstudio.com/BusinessCentral/_build/latest?definitionId=381&repoName=AquashieldAccruals&branchName=master)
-
-
-![Build Status](https://navertica.visualstudio.com/BusinessCentral/_apis/build/status%2FRetailMonkeys%2FMaster%2FRetailMonkeysEOSPackingListExtension%20Master?repoName=RetailMonkeysEOSPackingListExtension&branchName=master)
+BCRS DRS API - [![Build Status](https://navertica.visualstudio.com/BusinessCentral/_apis/build/status%2FBCRS%2FMaster%2FBCRS%20DRS%20API%20Master?reponame=BCRS%20DRS%20API&branchName=master)](https://navertica.visualstudio.com/BusinessCentral/_build/latest?definitionId=949&repoName=BCRS%20DRS%20API&branchName=master) <br>
+BCRSEmailing - [![Build Status](https://navertica.visualstudio.com/BusinessCentral/_apis/build/status%2FBCRS%2FMaster%2FBCRSEmailing%20Master?reponame=BCRSEmailing&branchName=master)](https://navertica.visualstudio.com/BusinessCentral/_build/latest?definitionId=1111&repoName=BCRSEmailing&branchName=master) <br>
+BCRSLogic - [![Build Status](https://navertica.visualstudio.com/BusinessCentral/_apis/build/status%2FBCRS%2FMaster%2FBCRSLogic%20Master?reponame=BCRSLogic&branchName=master)](https://navertica.visualstudio.com/BusinessCentral/_build/latest?definitionId=946&repoName=BCRSLogic&branchName=master) <br>
+BCRSReportPack - [![Build Status](https://navertica.visualstudio.com/BusinessCentral/_apis/build/status%2FBCRS%2FMaster%2FBCRSReportPack%20Master?reponame=BCRSReportPack&branchName=master)](https://navertica.visualstudio.com/BusinessCentral/_build/latest?definitionId=1014&repoName=BCRSReportPack&branchName=master) <br>
+BCRSSalesAndPurchaseCustomizations - [![Build Status](https://navertica.visualstudio.com/BusinessCentral/_apis/build/status%2FBCRS%2FMaster%2FBCRSSalesAndPurchaseCustomizations%20Master?reponame=BCRSSalesAndPurchaseCustomizations&branchName=master)](https://navertica.visualstudio.com/BusinessCentral/_build/latest?definitionId=1017&repoName=BCRSSalesAndPurchaseCustomizations&branchName=master) <br>
+BCRSSmallModifications - [![Build Status](https://navertica.visualstudio.com/BusinessCentral/_apis/build/status%2FBCRS%2FMaster%2FBCRSSmallModifications%20Master?reponame=BCRSSmallModifications&branchName=master)](https://navertica.visualstudio.com/BusinessCentral/_build/latest?definitionId=1011&repoName=BCRSSmallModifications&branchName=master) <br>
+BCRSWarehouse - [![Build Status](https://navertica.visualstudio.com/BusinessCentral/_apis/build/status%2FBCRS%2FMaster%2FBCRSWarehouse%20Master?reponame=BCRSWarehouse&branchName=master)](https://navertica.visualstudio.com/BusinessCentral/_build/latest?definitionId=1154&repoName=BCRSWarehouse&branchName=master) <br>

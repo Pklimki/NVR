@@ -1,5 +1,4 @@
-# NVR
-
+# BCRS Master <br>
 BCRS DRS API - [![Build Status](https://navertica.visualstudio.com/BusinessCentral/_apis/build/status%2FBCRS%2FMaster%2FBCRS%20DRS%20API%20Master?reponame=BCRS%20DRS%20API&branchName=master)](https://navertica.visualstudio.com/BusinessCentral/_build/latest?definitionId=949&repoName=BCRS%20DRS%20API&branchName=master) <br>
 BCRSEmailing - [![Build Status](https://navertica.visualstudio.com/BusinessCentral/_apis/build/status%2FBCRS%2FMaster%2FBCRSEmailing%20Master?reponame=BCRSEmailing&branchName=master)](https://navertica.visualstudio.com/BusinessCentral/_build/latest?definitionId=1111&repoName=BCRSEmailing&branchName=master) <br>
 BCRSLogic - [![Build Status](https://navertica.visualstudio.com/BusinessCentral/_apis/build/status%2FBCRS%2FMaster%2FBCRSLogic%20Master?reponame=BCRSLogic&branchName=master)](https://navertica.visualstudio.com/BusinessCentral/_build/latest?definitionId=946&repoName=BCRSLogic&branchName=master) <br>

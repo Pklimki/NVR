@@ -110,6 +110,7 @@ Nesmíme zapomenout, že v **datasetu chceme pouze řádky**, na kterých je ně
 			DataItemLinkReference = "Sales Shipment Header";
 			DataItemLink = "Document No." = field("No.");
 			DataItemTableView = where(Quantity = filter(> 0), Type = const("Item"));
+
 			column(NVRLVDDMDrumBundleNo_SalesShipmentLine; "NVR LVDDM Drum/Bundle No.")
 			{
 				IncludeCaption = true;

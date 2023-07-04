@@ -66,29 +66,29 @@ report  78958  "Export Posted S. Ship. Lines"
 
 Množina záznamů z určité tabulky je vždy přístupná skrze **dataitem**. Vlastnost ***RequestFilterFields*** určuje právě ty 3 parametry, které mají být nastaveny jako výchozí pro filtrování. Následně jsou implementována jednotlivá políčka z hlavičky prodejní dodávky, která mají být v datasetu obsažena. **Všimni si, že dataitem není uzavřený, neboť do něj bude vnořen dataitem řádku!**
 ``` csharp
-		dataitem("Sales Shipment Header"; "Sales Shipment Header")
+	dataitem("Sales Shipment Header"; "Sales Shipment Header")
+	{
+		RequestFilterFields = "Order No.", "Sell-to Customer No.", "Posting Date";
+		column(OrderNo_SalesShipmentHeader; "Order No.")
 		{
-			RequestFilterFields = "Order No.", "Sell-to Customer No.", "Posting Date";
-			column(OrderNo_SalesShipmentHeader; "Order No.")
-			{
-				IncludeCaption = true;
-			}
-			column(YourReference_SalesShipmentHeader; "Your Reference")
-			{
-				IncludeCaption = true;
-			}
-			column(No_SalesShipmentHeader; "No.")
-			{
-				IncludeCaption = true;
-			}
-			column(PostingDate_SalesShipmentHeader; "Posting Date")
-			{
-				IncludeCaption = true;
-			}
-			column(DocumentDate_SalesShipmentHeader; "Document Date")
-			{
-				IncludeCaption = true;
-			}
+			IncludeCaption = true;
+		}
+		column(YourReference_SalesShipmentHeader; "Your Reference")
+		{
+			IncludeCaption = true;
+		}
+		column(No_SalesShipmentHeader; "No.")
+		{
+			IncludeCaption = true;
+		}
+		column(PostingDate_SalesShipmentHeader; "Posting Date")
+		{
+			IncludeCaption = true;
+		}
+		column(DocumentDate_SalesShipmentHeader; "Document Date")
+		{
+			IncludeCaption = true;
+		}
 ```
 
 ### Položky řádků prodejní dodávky
@@ -105,27 +105,27 @@ Nesmíme zapomenout, že v **datasetu chceme pouze řádky**, na kterých je ně
 **Opět si všimni, že dataitem není uzavřený, neboť dojde ještě k jednomu vnoření!**
 
 ``` csharp
-			dataitem("Sales Shipment Line"; "Sales Shipment Line")
+		dataitem("Sales Shipment Line"; "Sales Shipment Line")
+		{
+			DataItemLinkReference = "Sales Shipment Header";
+			DataItemLink = "Document No." = field("No.");
+			DataItemTableView = where(Quantity = filter(> 0), Type = const("Item"));
+			column(NVRLVDDMDrumBundleNo_SalesShipmentLine; "NVR LVDDM Drum/Bundle No.")
 			{
-				DataItemLinkReference = "Sales Shipment Header";
-				DataItemLink = "Document No." = field("No.");
-				DataItemTableView = where(Quantity = filter(> 0), Type = const("Item"));
-				column(NVRLVDDMDrumBundleNo_SalesShipmentLine; "NVR LVDDM Drum/Bundle No.")
-				{
-					IncludeCaption = true;
-				}
-				column(UnitofMeasure_SalesShipmentLine; "Unit of Measure")
-				{
-					IncludeCaption = true;
-				}
-				column(No_SalesShipmentLine; "No.")
-				{
-					IncludeCaption = true;
-				}
-				column(Quantity_SalesShipmentLine; Quantity)
-				{
-					IncludeCaption = true;
-				}
+				IncludeCaption = true;
+			}
+			column(UnitofMeasure_SalesShipmentLine; "Unit of Measure")
+			{
+				IncludeCaption = true;
+			}
+			column(No_SalesShipmentLine; "No.")
+			{
+				IncludeCaption = true;
+			}
+			column(Quantity_SalesShipmentLine; Quantity)
+			{
+				IncludeCaption = true;
+			}
 ```
 
 ### Položky z karty zboží
@@ -133,15 +133,15 @@ Nesmíme zapomenout, že v **datasetu chceme pouze řádky**, na kterých je ně
 Protože chceme v datasetu i políčko itemCommonNo (obecné číslo z karty zboží), musíme se podívat na kartu zboží, neboť toto políčko není vytažené na řádku prodejní dodávky. Princip je stejný, jako u řádků prodejní dodávky. Pokud řádek v předchozím kroku projde "filtrem" (je typu zboží s množstvím větším než 0), tak pro zboží, které obsahuje, vyhledáme na kartě (tohoto) zboží políčko itemCommonNo.
 
 ``` csharp
-				dataitem(Item; Item)
+			dataitem(Item; Item)
+			{
+				DataItemLinkReference = "Sales Shipment Line";
+				DataItemLink = "No." = field("No.");
+				column(CommonItemNo_Item; "Common Item No.")
 				{
-					DataItemLinkReference = "Sales Shipment Line";
-					DataItemLink = "No." = field("No.");
-					column(CommonItemNo_Item; "Common Item No.")
-					{
-						IncludeCaption = true;
-					}
+					IncludeCaption = true;
 				}
+			}
 ```
 
 # Celý kód

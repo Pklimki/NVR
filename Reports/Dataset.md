@@ -69,6 +69,7 @@ Množina záznamů z určité tabulky je vždy přístupná skrze **dataitem**. 
 	dataitem("Sales Shipment Header"; "Sales Shipment Header")
 	{
 		RequestFilterFields = "Order No.", "Sell-to Customer No.", "Posting Date";
+
 		column(OrderNo_SalesShipmentHeader; "Order No.")
 		{
 			IncludeCaption = true;
@@ -138,6 +139,7 @@ Protože chceme v datasetu i políčko itemCommonNo (obecné číslo z karty zbo
 			{
 				DataItemLinkReference = "Sales Shipment Line";
 				DataItemLink = "No." = field("No.");
+
 				column(CommonItemNo_Item; "Common Item No.")
 				{
 					IncludeCaption = true;

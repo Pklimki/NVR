@@ -64,7 +64,7 @@ report  78958  "Export Posted S. Ship. Lines"
 
 ### Položky hlavičky prodejní dodávky
 
-Množina záznamů z určité tabulky je vždy přístupná skrze **dataitem**. Vlastnost ***RequestFilterFields*** určuje právě ty 3 parametry, které mají být nastaveny jako výchozí pro filtrování - definují tzv. **request page**. Následně jsou implementována jednotlivá políčka z hlavičky prodejní dodávky, která mají být v datasetu obsažena. **Všimni si, že dataitem není uzavřený, neboť do něj bude vnořen dataitem řádku!**
+Množina záznamů z určité tabulky je vždy přístupná skrze **dataitem**. Vlastnost ***RequestFilterFields*** určuje právě ty 3 parametry, které mají být nastaveny jako výchozí pro filtrování - objeví se na tzv. **request page**. Následně jsou implementována jednotlivá políčka z hlavičky prodejní dodávky, která mají být v datasetu obsažena. **Všimni si, že dataitem není uzavřený, neboť do něj bude vnořen dataitem řádku!**
 
 Zároveň je žádoucí vlastnost **PrintOnlyIfDetail**, která zaručí, že daná hlavička nebude zahrnuta do reportu, když budou její "děti" (=řádky) prázdné. Daná hlavička bude přeskočena a report bude pokračovat dále.
 ``` csharp

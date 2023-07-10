@@ -96,7 +96,7 @@ Zároveň je žádoucí vlastnost **PrintOnlyIfDetail**, která zaručí, že da
 ```
 
 #### Request page
-![Request page image](Images/Dataset/Request Page reportu.png "Request Page")
+![Request page image](/Images/Dataset/Request Page reportu.png)
 
 ### Položky řádků prodejní dodávky
 

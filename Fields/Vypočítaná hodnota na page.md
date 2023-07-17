@@ -27,7 +27,7 @@ graph LR
 A((var X)) --> B[Warehouse Shipment List] --> C(OnAfterGetRecord) --> E(PickingStatusForWhseShipHeader)
 B --> D(OnAfterGetCurrRecord) --> E
 E -- Nastavuje hodnotu X --> A
-E -- Hodnoty pro výpočet --> F(Count) -- Vrací vypočtenou hodnotu --> E
+E -- Hodnoty pro výpočet --> F(CountPickingStatus) -- Vrací vypočtenou hodnotu --> E
 ```
 
 ## Vytvoření datasetu (reportu)

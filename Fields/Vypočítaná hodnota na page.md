@@ -24,188 +24,89 @@ Pro výpočet potřebujeme získat dodané množství a celkové množství, kte
 
 ```mermaid
 graph LR
-A((var X)) --> B[Warehouse Shipment List] --> C(OnAfterGetRecord) --> E(PickingStatusForWhseShipHeader)
+A((var PickingStatus)) --> B[Warehouse Shipment List] --> C(OnAfterGetRecord) --> E(PickingStatusForWhseShipHeader)
+A --> G[Warehouse Shipment Header] --> C
+G --> D
 B --> D(OnAfterGetCurrRecord) --> E
 E -- Nastavuje hodnotu X --> A
 E -- Hodnoty pro výpočet --> F(CountPickingStatus) -- Vrací vypočtenou hodnotu --> E
 ```
 
-## Vytvoření datasetu (reportu)
-Je třeba si připomenout, že pouze "vytahujeme" data z BC, neděláme žádný layout. Data, která budou v datasetu obsažena, definujeme v **dataset**
+Na stránku bude vytaženo políčko, jehož hodnota bude určena proměnnou **var PickingStatus**. Následně přidáme **triggery** **OnAfterGetRecord** a **OnAfterGetCurrRecord**, při kterých budeme volat vlastní funkci **PickingStatusForWhseShipHeader**. Tato funkce provede zmíněnou filtraci řádků dodávky ze skladu a získá potřebné hodnoty k výpočtu, které předá funkci **CountPickingStatus**, jenž výpočet realizuje a vrací vypočtenou hodnotu. Vypočtené hodnota je pak v (původní) funkci PickingStatusForWhseShipHeader přiřazena proměnné var PickingStatus, díky čemuž bude zobrazena na stránce.
+
+## Vytvoření políčka na stránce
+> Je třeba si připomenout, že pouze zobrazujeme hodnotu a **netvoříme žádný záznam v tabulce**!
 ``` csharp
-report  78958  "Export Posted S. Ship. Lines"
+pageextension 80025 "NVR RMWS Whse. Shpt. List" extends "Warehouse Shipment List"
 {
-    UsageCategory = ReportsAndAnalysis;
-    ApplicationArea = All;
-    Caption = 'Export Posted Sales Shipment Lines';
-    dataset
+    layout
     {
-```
+        addlast(Control1)
+        {
+            field("NVR RMWS Picking status Perc"; PickingStatus)
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the Picking status field.';
+                Editable = false;
+                Caption = 'Picking Status %';
+            }
+        }
+    }
+    var
+        NVRRMWSWhseShipmentStatus: Codeunit "NVR RMWS Whse. Shipment Status";
+        PickingStatus: Decimal;
 
+    trigger OnAfterGetRecord()
+    begin
+        NVRRMWSWhseShipmentStatus.PickingStatusForWhseShipHeader(Rec, PickingStatus);
+    end;
 
-### Položky hlavičky prodejní dodávky
-
-Množina záznamů z určité tabulky je vždy přístupná skrze **dataitem**. Vlastnost ***RequestFilterFields*** určuje právě ty 3 parametry, které mají být nastaveny jako výchozí pro filtrování - objeví se na tzv. **request page**. Následně jsou implementována jednotlivá políčka z hlavičky prodejní dodávky, která mají být v datasetu obsažena. **Všimni si, že dataitem není uzavřený, neboť do něj bude vnořen dataitem řádku!**
-
-Zároveň je žádoucí vlastnost **PrintOnlyIfDetail**, která zaručí, že daná hlavička nebude zahrnuta do reportu, když budou její "děti" (=řádky) prázdné. Daná hlavička bude přeskočena a report bude pokračovat dále.
-``` csharp
-	dataitem("Sales Shipment Header"; "Sales Shipment Header")
-	{
-		RequestFilterFields = "Order No.", "Sell-to Customer No.", "Posting Date";
-		PrintOnlyIfDetail = true;
-
-		column(OrderNo_SalesShipmentHeader; "Order No.")
-		{
-			IncludeCaption = true;
-		}
-		column(YourReference_SalesShipmentHeader; "Your Reference")
-		{
-			IncludeCaption = true;
-		}
-		column(No_SalesShipmentHeader; "No.")
-		{
-			IncludeCaption = true;
-		}
-		column(PostingDate_SalesShipmentHeader; "Posting Date")
-		{
-			IncludeCaption = true;
-		}
-		column(DocumentDate_SalesShipmentHeader; "Document Date")
-		{
-			IncludeCaption = true;
-		}
-```
-
-#### Request page
-![Request page image](Images/Dataset/RequestPageReportu.png)
-
-### Položky řádků prodejní dodávky
-
-Dataitem řádku je **vnořen** do dataitemu hlavičky prodejní dodávky, protože chceme, aby algoritmus pro každou hlavičku prodejní dodávky prošel řádky, které patří ke konkrétní hlavičce. Kromě samotného vnoření **je nezbytné nastavit ještě další vlastnosti:**
-
- - ***DataItemLinkReference*** - na jakou tabulku se odkazujeme --> Hlavička prodejní dodávky
- - ***DataItemLink*** - podle čeho "párujeme" --> Řádky jsou k hlavičce přiřazeny prostřednictvím políčka Document No., které se shoduje s polem No. hlavičky
-
-Nesmíme zapomenout, že v **datasetu chceme pouze řádky**, na kterých je nějaké **zboží s množstvím větším než 0**. Proto nastavujeme filtr prostřednictvím:
-
- - ***DataItemTableView***
-
-**Opět si všimni, že dataitem není uzavřený, neboť dojde ještě k jednomu vnoření!**
-
-``` csharp
-		dataitem("Sales Shipment Line"; "Sales Shipment Line")
-		{
-			DataItemLinkReference = "Sales Shipment Header";
-			DataItemLink = "Document No." = field("No.");
-			DataItemTableView = where(Quantity = filter(> 0), Type = const("Item"));
-
-			column(NVRLVDDMDrumBundleNo_SalesShipmentLine; "NVR LVDDM Drum/Bundle No.")
-			{
-				IncludeCaption = true;
-			}
-			column(UnitofMeasure_SalesShipmentLine; "Unit of Measure")
-			{
-				IncludeCaption = true;
-			}
-			column(No_SalesShipmentLine; "No.")
-			{
-				IncludeCaption = true;
-			}
-			column(Quantity_SalesShipmentLine; Quantity)
-			{
-				IncludeCaption = true;
-			}
-```
-
-### Položky z karty zboží
-
-Protože chceme v datasetu i políčko itemCommonNo (obecné číslo z karty zboží), musíme se podívat na kartu zboží, neboť toto políčko není vytažené na řádku prodejní dodávky. Princip je stejný, jako u řádků prodejní dodávky. Pokud řádek v předchozím kroku projde "filtrem" (je typu zboží s množstvím větším než 0), tak pro zboží, které obsahuje, vyhledáme na kartě (tohoto) zboží políčko itemCommonNo.
-
-``` csharp
-			dataitem(Item; Item)
-			{
-				DataItemLinkReference = "Sales Shipment Line";
-				DataItemLink = "No." = field("No.");
-
-				column(CommonItemNo_Item; "Common Item No.")
-				{
-					IncludeCaption = true;
-				}
-			}
-```
-
-# Celý kód
-``` csharp
-report  78958  "Export Posted S. Ship. Lines"
-{
-	UsageCategory = ReportsAndAnalysis;
-	ApplicationArea = All;
-	Caption = 'Export Posted Sales Shipment Lines';
-
-	dataset
-	{
-		dataitem("Sales Shipment Header"; "Sales Shipment Header")
-		{
-			RequestFilterFields = "Order No.", "Sell-to Customer No.", "Posting Date";
-			PrintOnlyIfDetail = true;
-			
-			column(OrderNo_SalesShipmentHeader; "Order No.")
-			{
-				IncludeCaption = true;
-			}
-			column(YourReference_SalesShipmentHeader; "Your Reference")
-			{
-				IncludeCaption = true;
-			}
-			column(No_SalesShipmentHeader; "No.")
-			{
-				IncludeCaption = true;
-			}
-			column(PostingDate_SalesShipmentHeader; "Posting Date")
-			{
-				IncludeCaption = true;
-			}
-			column(DocumentDate_SalesShipmentHeader; "Document Date")
-			{
-				IncludeCaption = true;
-			}
-
-  
-
-			dataitem("Sales Shipment Line"; "Sales Shipment Line")
-			{
-				DataItemLinkReference = "Sales Shipment Header";
-				DataItemLink = "Document No." = field("No.");
-				DataItemTableView = where(Quantity = filter(> 0), Type = const("Item"));
-
-				column(NVRLVDDMDrumBundleNo_SalesShipmentLine; "NVR LVDDM Drum/Bundle No.")
-				{
-					IncludeCaption = true;
-				}
-				column(UnitofMeasure_SalesShipmentLine; "Unit of Measure")
-				{
-					IncludeCaption = true;
-				}
-				column(No_SalesShipmentLine; "No.")
-				{
-					IncludeCaption = true;
-				}
-				column(Quantity_SalesShipmentLine; Quantity)
-				{
-					IncludeCaption = true;
-				}
-
-				dataitem(Item; Item)
-				{
-					DataItemLinkReference = "Sales Shipment Line";
-					DataItemLink = "No." = field("No.");
-
-					column(CommonItemNo_Item; "Common Item No.")
-					{
-						IncludeCaption = true;
-					}
-				}
-			}
-		}
-	}
+    trigger OnAfterGetCurrRecord()
+    begin
+        NVRRMWSWhseShipmentStatus.PickingStatusForWhseShipHeader(Rec, PickingStatus);
+    end;
 }
+```
+
+
+### Funkce PickingStatusForWhseShipHeader pro získání hodnot nezbytných k výpočtu
+
+- Procedura je **internal**, abych k ní mohl přistupovat z jiných částí kódů v rámci aplikace
+- Jako parametry přijímá:
+ 	- Hlavičku dodávky ze skladu
+ 	- Proměnnou, jejíž hodnotu nastavuje
+- Pokud existují pole s **"(Base)"**, tak to znamená, že to pole je v **základních jednotkách**. Pokud existuje pole s "(Base)" i bez něj, měl bys použít to s "(Base)"!
+- Funkce **SetCurrentKey** třídí záznamy podle zadaných parametrů. Do parametrů **umisťujeme pouze PK**. Jako parametry je tedy vhodné použít pole, podle kterých filtrujeme a jsou zároveň primárními klíči. Použití zejména ve spojení s funkcí CalcSums.
+- Funkce **CalcSums** spočítá sumu z určitého pole a suma pak bude přístupná prostřednictvím daného pole. Použití této funkce by měla předcházet funkce SetCurrentKey a filtrování záznamů!
+- 
+``` csharp
+codeunit 80027 "NVR RMWS Whse. Shipment Status"
+{
+internal procedure PickingStatusForWhseShipHeader(var WarehouseShipmentHeader: Record "Warehouse Shipment Header"; var PickingStatus: Decimal)
+    var
+        WarehouseShipmentLine: Record "Warehouse Shipment Line";
+    begin
+	WarehouseShipmentLine.SetCurrentKey("No.");
+        WarehouseShipmentLine.SetRange("No.", WarehouseShipmentHeader."No.");
+        WarehouseShipmentLine.SetRange("Location Code", WarehouseShipmentHeader."Location Code");
+        WarehouseShipmentLine.CalcSums("Qty. (Base)");
+        WarehouseShipmentLine.CalcSums("Qty. Shipped (Base)");
+        PickingStatus := CountPickingStatus(WarehouseShipmentLine."Qty. (Base)", WarehouseShipmentLine."Qty. Shipped (Base)");
+    end;
+}
+```
+
+### FunkceCountPickingStatus pro realizaci výpočtu
+
+``` csharp
+local procedure CountPickingStatus(Quantity: Integer; QuantityShipped: Integer): Decimal
+    var
+        PickingStatus: Decimal;
+    begin
+        if Quantity = 0 then
+            exit(0);
+
+        PickingStatus := (QuantityShipped / Quantity) * 100;
+        exit(PickingStatus);
+    end;
+```

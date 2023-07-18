@@ -28,7 +28,7 @@ A((var PickingStatus)) --> B[Warehouse Shipment List] --> C(OnAfterGetRecord) --
 A --> G[Warehouse Shipment Header] --> C
 G --> D
 B --> D(OnAfterGetCurrRecord) --> E
-E -- Nastavuje hodnotu X --> A
+E -- Nastavuje hodnotu PickingStatus --> A
 E -- Hodnoty pro výpočet --> F(CountPickingStatus) -- Vrací vypočtenou hodnotu --> E
 ```
 

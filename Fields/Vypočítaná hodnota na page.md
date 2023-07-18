@@ -99,7 +99,7 @@ internal procedure PickingStatusForWhseShipHeader(var WarehouseShipmentHeader: R
 ### FunkceCountPickingStatus pro realizaci výpočtu
 
 ``` csharp
-local procedure CountPickingStatus(Quantity: Integer; QuantityShipped: Integer): Decimal
+local procedure CountPickingStatus(Quantity: Decimal; QuantityShipped: Decimal): Decimal
     var
         PickingStatus: Decimal;
     begin

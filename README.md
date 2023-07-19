@@ -7,4 +7,4 @@
 
 # Návody
 1. [Dataset](Reports/Dataset.md)
-2. [Vypočítaná hodnota na stránce](Fields/"Vypočítaná hodnota na page.md")
+2. [Vypočítaná hodnota na stránce](Fields/Vypocitana%20hodnota%20na%20page.md)

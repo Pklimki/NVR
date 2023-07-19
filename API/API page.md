@@ -8,15 +8,23 @@
 API page programujeme velmi podobným způsobem, jako klasickou page v BC. Jsou zde jen nové vlastnosti, které je nezbytné nastavit, a zároveň existují i nějaké typografické rozdíly.
 
 __**Vlastnosti:**__
+``` csharp
+PageType = API;
+Caption = 'customer', Locked = true;
+APIPublisher = 'navertica';
+APIGroup = 'reporting';
+APIVersion = 'v1.0';
+EntityName = 'customer';
+EntitySetName = 'customers';
+SourceTable = Customer;
+DelayedInsert = true;
+ODataKeyFields = SystemId;
+Editable = false;
+InsertAllowed = false;
+DeleteAllowed = false;
+ModifyAllowed = false;
+```
 
-    - `PageType = API;`
-    - `Caption = 'customer', Locked = true;` **IDK CO TO ZNAMENÁ**
-    - Laso
-    -
-    -
-    -
-    -
-    -
 
 > V tomto případě nelze využít kalkulované pole, neboť je hodnutu nutné vypočítat určitým vzorcem. 
 

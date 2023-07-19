@@ -29,6 +29,8 @@ ModifyAllowed = false;                         // Povolena modifikace záznamů
 
 Zde nejsou žádné povinné vlastnosti. Název políčka, který bude viditelný na API page **musí začínat malým písmenem** - tzv. __**camelCasing**__. Pokud přidáme caption, tak také platí camelCasing pravidlo.
 
+Stejně jako u [Datasetu](/Reports/Dataset.md) lze položky prolinkovat do sebe. K tomu se, narozdíl od datasetu, používá klíčové slovo **parts**. Podrobněji popsáno v návodu na [Linkování API položek na API stránce](Linkovani%20api%20polozek.md)
+
 ``` csharp
 layout
     {

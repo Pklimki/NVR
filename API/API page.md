@@ -273,6 +273,3 @@ page 79055 "NVR VRI Customer API"
     end;
 }
 ```
-
-# Druhý způsob
-Druhým způsobem je vytvoření záznamu v tabulce, vytažení políčka na page. Dále vyhledání vhodných triggerů, na které realizujeme eventsubscribery, jenž budou volat stejné funkce, jako voláme my. Na toto pole by se mělo dát filtrovat i podle něj třídit.

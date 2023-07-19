@@ -9,26 +9,55 @@ API page programujeme velmi podobným způsobem, jako klasickou page v BC. Jsou 
 
 __**Vlastnosti:**__
 ``` csharp
-PageType = API;					// Typ stránky = API
-Caption = 'customer', Locked = true;		// Popis, Locked IDK ???????????????????????????????????????????????????????????????????
-APIPublisher = 'navertica';			// Publisher	
-APIGroup = 'reporting';				// Skupina API, která je pak součástí URL dotazu. Používá se pro nějaké logické dělení
-APIVersion = 'v1.0';				// Verze API
-EntityName = 'customer';			// Jednotné číslo entity
+PageType = API;					        // Typ stránky = API
+Caption = 'customer', Locked = true;	// Popis, Locked IDK ???????????????????????????????????????????????????????????????????
+APIPublisher = 'navertica';			    // Publisher	
+APIGroup = 'reporting';				    // Skupina API, která je pak součástí URL dotazu. Používá se pro nějaké logické dělení
+APIVersion = 'v1.0';				    // Verze API
+EntityName = 'customer';			    // Jednotné číslo entity
 EntitySetName = 'customers';			// Množné číslo entity
-SourceTable = Customer;				// Zdrojová tabulka
-DelayedInsert = true;				// Povinná vlastnost na editovatelné API stránce (Editable = true). Funguje tak, že se nejprve zadají hodnoty všech polí a poté se záznam vloží najednou.
-ODataKeyFields = SystemId;			// Vlastnost, která říká, podle čeho bude jednoznačně identifikovatelný daný záznam. V případě API je doporučeno používat SystemId, neboť bude pro daný záznam vždy stejný. SystemId je nějaké ID generované BC.
-Editable = false;				// Editovatelná API page
-InsertAllowed = false;				// Povoleno vkládání záznamů
-DeleteAllowed = false;				// Povoleno odstraňování záznamů
-ModifyAllowed = false;				// Povolena modifikace záznamů
+SourceTable = Customer;				    // Zdrojová tabulka
+DelayedInsert = true;				    // Povinná vlastnost na editovatelné API stránce (Editable = true). Funguje tak, že se nejprve zadají hodnoty všech polí a poté se záznam vloží najednou.
+ODataKeyFields = SystemId;			    // Vlastnost, která říká, podle čeho bude jednoznačně identifikovatelný daný záznam. V případě API je doporučeno používat SystemId, neboť bude pro daný záznam vždy stejný. SystemId je nějaké ID generované BC.
+Editable = false;				        // Editovatelná API page
+InsertAllowed = false;				    // Povoleno vkládání záznamů
+DeleteAllowed = false;				    // Povoleno odstraňování záznamů
+ModifyAllowed = false;				    // Povolena modifikace záznamů
 ```
 
+# Políčka na stránce
 
-> V tomto případě nelze využít kalkulované pole, neboť je hodnutu nutné vypočítat určitým vzorcem. 
+Zde nejsou žádné povinné vlastnosti. Název políčka, který bude viditelný na API page **musí začínat malým písmenem** - tzv. __**camelCasing**__.
 
-# Jak to bude fungovat
+``` csharp
+layout
+    {
+        area(Content)
+        {
+            repeater(control1)
+            {
+                field(number; Rec."No.")
+                {
+                    Caption = 'number', Locked = true;
+                }
+                field(name; Rec.Name)
+                {
+                    Caption = 'name', Locked = true;
+                }
+                field(type; Rec."Contact Type")
+                {
+                    Caption = 'type', Locked = true;
+                }
+            }
+        }
+    }
+```
+
+## Povinná políčka na stránce
+Existují 2 políčka, která **musí být vždy vytažena:**
+    - pole "SystemId" s názvem "id"
+    - pole "lastModifiedDateTime" s ==názvem== "lastModifiedDateTime" 
+    -
 
 Zvolíme implementaci prostřednictvím vypočítaného políčka, které se bude zobrazovat pouze na konkrétních stránkách. **Nebudeme** tedy **vytvářet políčko (záznam) v tabulce**, jak jsme zvyklí. Na stránce vytvoříme proměnnou, kterou necháme zobrazit v políčku na této stránce. Na stránku přidáme triggery, při kterých dojde k vypočítání hodnoty této proměnné, jenž bude následně zobrazena.
 

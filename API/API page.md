@@ -56,106 +56,222 @@ layout
 ## Povinná políčka na stránce
 Existují 2 políčka, která **musí být vždy vytažena:**
 
-    - Pole "SystemId" s názvem "id"
-    - Pole **"SystemModifiedAt"** s názvem ```c#
-    "lastModifiedDateTime"
-    ``` 
-    -
+    - Pole **"SystemId"** s názvem **"id"**
+    - Pole **"SystemModifiedAt"** s názvem **"lastModifiedDateTime"** 
+    
+> Je nezbytné dodržet přesný název pro tato pole!
 
-Zvolíme implementaci prostřednictvím vypočítaného políčka, které se bude zobrazovat pouze na konkrétních stránkách. **Nebudeme** tedy **vytvářet políčko (záznam) v tabulce**, jak jsme zvyklí. Na stránce vytvoříme proměnnou, kterou necháme zobrazit v políčku na této stránce. Na stránku přidáme triggery, při kterých dojde k vypočítání hodnoty této proměnné, jenž bude následně zobrazena.
-
-Pro výpočet potřebujeme získat dodané množství a celkové množství, které má být dodáno. Tyto informace jsou naštěstí na řádcích dodávky ze skladu, čímž se nám vše opět zjednoduší. Pro danou hlavičku dodávky ze skladu pomocí filrů najdeme všechny řádky dodávky ze skladu. Ty pak projdeme a sečteme požadované hodnoty. 
-
-
-```mermaid
-graph LR
-A((var PickingStatus)) --> B[Warehouse Shipment List] --> C(OnAfterGetRecord) --> E(PickingStatusForWhseShipHeader)
-A --> G[Warehouse Shipment Header] --> C
-G --> D
-B --> D(OnAfterGetCurrRecord) --> E
-E -- Nastavuje hodnotu PickingStatus --> A
-E -- Hodnoty pro výpočet --> F(CountPickingStatus) -- Vrací vypočtenou hodnotu --> E
-```
-
-Na stránku bude vytaženo políčko, jehož hodnota bude určena proměnnou **var PickingStatus**. Následně přidáme **triggery** **OnAfterGetRecord** a **OnAfterGetCurrRecord**, při kterých budeme volat vlastní funkci **PickingStatusForWhseShipHeader**. Tato funkce provede zmíněnou filtraci řádků dodávky ze skladu a získá potřebné hodnoty k výpočtu, které předá funkci **CountPickingStatus**, jenž výpočet realizuje a vrací vypočtenou hodnotu. Vypočtené hodnota je pak v (původní) funkci PickingStatusForWhseShipHeader přiřazena proměnné var PickingStatus, díky čemuž bude zobrazena na stránce.
-
-> Běžný způsob je ten, že se v triggerech na stránce volá lokální procedura **SetCalculatedFields()**, ve které je pak implementován výpočet. V tomto případě by se tedy v této funkci mohla volat funkce **PickingStatusForWhseShipHeader**, která by vracela hodnotu získanou díky funkci **CountPickingStatus**.
-
-## Vytvoření políčka na stránce
-> Je třeba si připomenout, že pouze zobrazujeme hodnotu a **netvoříme žádný záznam v tabulce**!
 ``` csharp
-pageextension 80025 "NVR RMWS Whse. Shpt. List" extends "Warehouse Shipment List"
-{
-    layout
+layout
     {
-        addlast(Control1)
+        area(Content)
         {
-            field("NVR RMWS Picking status Perc"; PickingStatus)
+            repeater(control1)
             {
-                ApplicationArea = All;
-                ToolTip = 'Specifies the value of the Picking status field.';
-                Editable = false;
-                Caption = 'Picking Status %';
+                field(id; Rec.SystemId) { }
+                field(lastModifiedDateTime; Rec.SystemModifiedAt) { }
             }
         }
     }
-    var
-        NVRRMWSWhseShipmentStatus: Codeunit "NVR RMWS Whse. Shipment Status";
-        PickingStatus: Decimal;
+```
+
+
+# Celý kód
+
+Jelikož zatím task na API nebyl, tak jsem si kód vypůjčil z VBHReportingIntegration - CustomerAPI.Page.al
+
+
+``` csharp
+page 79055 "NVR VRI Customer API"
+{
+    PageType = API;
+    Caption = 'customer', Locked = true;
+    APIPublisher = 'navertica';
+    APIGroup = 'reporting';
+    APIVersion = 'v1.0';
+    EntityName = 'customer';
+    EntitySetName = 'customers';
+    SourceTable = Customer;
+    DelayedInsert = true;
+    ODataKeyFields = SystemId;
+    Editable = false;
+    InsertAllowed = false;
+    DeleteAllowed = false;
+    ModifyAllowed = false;
+
+    layout
+    {
+        area(Content)
+        {
+            repeater(control1)
+            {
+                field(id; Rec.SystemId)
+                {
+                    Caption = 'id', Locked = true;
+                }
+                field(number; Rec."No.")
+                {
+                    Caption = 'number', Locked = true;
+                }
+                field(name; Rec.Name)
+                {
+                    Caption = 'name', Locked = true;
+                }
+                field(type; Rec."Contact Type")
+                {
+                    Caption = 'type', Locked = true;
+                }
+                field(address; Rec.Address)
+                {
+                    Caption = 'address', Locked = true;
+                }
+                field(address2; Rec."Address 2")
+                {
+                    Caption = 'address2', Locked = true;
+                }
+                field(city; Rec.City)
+                {
+                    Caption = 'city', Locked = true;
+                }
+                field(county; Rec.County)
+                {
+                    Caption = 'county', Locked = true;
+                }
+                field(country; Rec."Country/Region Code")
+                {
+                    Caption = 'country', Locked = true;
+                }
+                field(postCode; Rec."Post Code")
+                {
+                    Caption = 'postCode', Locked = true;
+                }
+                field(phoneNumber; Rec."Phone No.")
+                {
+                    Caption = 'phoneNumber', Locked = true;
+                }
+                field(email; Rec."E-Mail")
+                {
+                    Caption = 'email', Locked = true;
+                }
+                field(website; Rec."Home Page")
+                {
+                    Caption = 'website', Locked = true;
+                }
+                field(salespersonCode; Rec."Salesperson Code")
+                {
+                    Caption = 'salespersonCode', Locked = true;
+                }
+                field(balanceDue; Rec."Balance Due")
+                {
+                    Caption = 'balanceDue', Locked = true;
+                }
+                field(creditLimit; Rec."Credit Limit (LCY)")
+                {
+                    Caption = 'creditLimit', Locked = true;
+                }
+                field(taxLiable; Rec."Tax Liable")
+                {
+                    Caption = 'taxLiable', Locked = true;
+                }
+                field(taxAreaId; Rec."Tax Area ID")
+                {
+                    Caption = 'taxAreaId', Locked = true;
+                }
+                field(taxAreaDisplayName; TaxAreaDisplayNameGlobal)
+                {
+                    Caption = 'taxAreaDisplayName', Locked = true;
+                }
+                field(vatRegistrationNumber; Rec."VAT Registration No.")
+                {
+                    Caption = 'taxRegistrationNumber', Locked = true;
+                }
+                field(currencyId; Rec."Currency Id")
+                {
+                    Caption = 'currencyId', Locked = true;
+                }
+                field(currencyCode; CurrencyCodeTxt)
+                {
+                    Caption = 'currencyCode', Locked = true;
+                }
+                field(paymentTermsId; Rec."Payment Terms Id")
+                {
+                    Caption = 'paymentTermsId', Locked = true;
+                }
+                field(shipmentMethodId; Rec."Shipment Method Id")
+                {
+                    Caption = 'shipmentMethodId', Locked = true;
+                }
+                field(paymentMethodId; Rec."Payment Method Id")
+                {
+                    Caption = 'paymentMethodId', Locked = true;
+                }
+                field(blocked; Rec.Blocked)
+                {
+                    Caption = 'blocked', Locked = true;
+                }
+                field(lastModifiedDateTime; Rec.SystemModifiedAt)
+                {
+                    Caption = 'lastModifiedDateTime', Locked = true;
+                }
+                field(registrationNoCZL; Rec."Registration No. CZL")
+                {
+                    Caption = 'Registration No.', Locked = true;
+                }
+                field(paymentMethodCode; Rec."Payment Method Code")
+                {
+                    Caption = 'Payment Method Code', Locked = true;
+                }
+                field(billToCustomerNo; Rec."Bill-to Customer No.")
+                {
+                    Caption = 'Bill-to Customer No.', Locked = true;
+                }
+                field(totDefCreditLimit; Rec."NVR VSM Tot. Def. Credit Limit")
+                {
+                    Caption = 'totDefCreditLimit', Locked = true;
+                }
+                field(totTempCreditLimit; Rec."NVR VSM Tot. Temp.Credit Limit")
+                {
+                    Caption = 'totTempCreditLimit', Locked = true;
+                }
+                field(totalTempCrLFrom; Rec."NVR VSM Total. Temp.Cr.L. From")
+                {
+                    Caption = 'totalTempCrLFrom', Locked = true;
+                }
+                field(totalTempCrLTo; Rec."NVR VSM Total. Temp.Cr.L. To")
+                {
+                    Caption = 'totalTempCrLTo', Locked = true;
+                }
+                field(tolOfDaysPastDue; Rec."NVR VSM Tol. of Days Past Due")
+                {
+                    Caption = 'tolOfDaysPastDue', Locked = true;
+                }
+                field(tempTolOfDays; Rec."NVR VSM Temp. Tol. of Days")
+                {
+                    Caption = 'tempTolOfDays', Locked = true;
+                }
+            }
+        }
+    }
 
     trigger OnAfterGetRecord()
     begin
-        NVRRMWSWhseShipmentStatus.PickingStatusForWhseShipHeader(Rec, PickingStatus);
+        SetCalculatedFields();
     end;
 
-    trigger OnAfterGetCurrRecord()
+    var
+        GraphMgtGeneralTools: Codeunit "Graph Mgt - General Tools";
+        LCYCurrencyCode: Code[10];
+        CurrencyCodeTxt: Text;
+        TaxAreaDisplayNameGlobal: Text;
+
+    local procedure SetCalculatedFields()
+    var
+        TaxAreaBuffer: Record "Tax Area Buffer";
     begin
-        NVRRMWSWhseShipmentStatus.PickingStatusForWhseShipHeader(Rec, PickingStatus);
+        CurrencyCodeTxt := GraphMgtGeneralTools.TranslateNAVCurrencyCodeToCurrencyCode(LCYCurrencyCode, Rec."Currency Code");
+        TaxAreaDisplayNameGlobal := TaxAreaBuffer.GetTaxAreaDisplayName(Rec."Tax Area ID");
     end;
 }
-```
-
-
-### Funkce PickingStatusForWhseShipHeader pro získání hodnot nezbytných k výpočtu
-
-- Procedura je **internal**, abych k ní mohl přistupovat z jiných částí kódů v rámci aplikace
-- Jako parametry přijímá:
- 	- Hlavičku dodávky ze skladu
- 	- Proměnnou, jejíž hodnotu nastavuje
-- Pokud existují pole s **"(Base)"**, tak to znamená, že to pole je v **základních jednotkách**. Pokud existuje pole s "(Base)" i bez něj, měl bys použít to s "(Base)"!
-- Funkce **SetCurrentKey** třídí záznamy podle zadaných parametrů. Do parametrů **umisťujeme pouze PK**. Jako parametry je tedy vhodné použít pole, podle kterých filtrujeme a jsou zároveň primárními klíči. Použití zejména ve spojení s funkcí CalcSums.
-- Funkce **CalcSums** spočítá sumu z určitého pole a suma pak bude přístupná prostřednictvím daného pole. Použití této funkce by měla předcházet funkce SetCurrentKey a filtrování záznamů!
-- 
-``` csharp
-codeunit 80027 "NVR RMWS Whse. Shipment Status"
-{
-internal procedure PickingStatusForWhseShipHeader(var WarehouseShipmentHeader: Record "Warehouse Shipment Header"; var PickingStatus: Decimal)
-    var
-        WarehouseShipmentLine: Record "Warehouse Shipment Line";
-    begin
-	WarehouseShipmentLine.SetCurrentKey("No.");
-        WarehouseShipmentLine.SetRange("No.", WarehouseShipmentHeader."No.");
-        WarehouseShipmentLine.SetRange("Location Code", WarehouseShipmentHeader."Location Code");
-        WarehouseShipmentLine.CalcSums("Qty. (Base)");
-        WarehouseShipmentLine.CalcSums("Qty. Shipped (Base)");
-        PickingStatus := CountPickingStatus(WarehouseShipmentLine."Qty. (Base)", WarehouseShipmentLine."Qty. Shipped (Base)");
-    end;
-}
-```
-
-### FunkceCountPickingStatus pro realizaci výpočtu
-
-``` csharp
-local procedure CountPickingStatus(Quantity: Decimal; QuantityShipped: Decimal): Decimal
-    var
-        PickingStatus: Decimal;
-    begin
-        if Quantity = 0 then
-            exit(0);
-
-        PickingStatus := (QuantityShipped / Quantity) * 100;
-        exit(PickingStatus);
-    end;
 ```
 
 # Druhý způsob

@@ -10,8 +10,20 @@
 [Soubory můžeš aktualizovat/přidat pomocí pipeliny](https://navertica.visualstudio.com/BusinessCentral/_build?definitionId=1914&_a=summary)
 
 
-# Návody
+# Návody (řadit abecedně)
+1. [Jak založit novou aplikaci = Haus.dopsat](New%20App/Zalozeni%20nove%20appky.md)
+   
+## API
+1. [API Page](API/API%20page.md)
+2. [Linkování API položek]
+3. [Testování API]
+
+## CodeUnity
+1. [Parametr procedury s nebo bez var?]
+
+## Políčka
+1. [Calculated Fields - Vypočítaná hodnota na stránce](Fields/Vypocitana%20hodnota%20na%20page.md)
+
+## Reporty
 1. [Dataset](Reports/Dataset.md)
-2. [Calculated Fields - Vypočítaná hodnota na stránce](Fields/Vypocitana%20hodnota%20na%20page.md)
-3. [Jak založit novou aplikaci = Haus.dopsat](New%20App/Zalozeni%20nove%20appky.md)
-4. [API Page](API/API%20page.md)
+   

@@ -10,7 +10,7 @@
 [Soubory můžeš aktualizovat/přidat pomocí pipeliny](https://navertica.visualstudio.com/BusinessCentral/_build?definitionId=1914&_a=summary)
 
 
-# Návody (řadit abecedně)
+# Návody (řadit abecedně &#x1F609;)
 1. [Jak založit novou aplikaci = Haus.dopsat](New%20App/Zalozeni%20nove%20appky.md)
    
 ## API

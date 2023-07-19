@@ -10,7 +10,7 @@ API page programujeme velmi podobným způsobem, jako klasickou page v BC. Jsou 
 __**Vlastnosti:**__
 ``` csharp
 PageType = API;                                // Typ stránky = API
-Caption = 'customer', Locked = true;           // Popis, Locked IDK ???????????????????????????????????????????????????????????????????
+Caption = 'customer', Locked = true;           // Popis, Locked - nevygeneruje se překlad
 APIPublisher = 'navertica';                    // Publisher	
 APIGroup = 'reporting';                        // Skupina API, která je pak součástí URL dotazu. Používá se pro nějaké logické dělení
 APIVersion = 'v1.0';                           // Verze API

@@ -56,8 +56,8 @@ layout
 ## Povinná políčka na stránce
 Existují 2 políčka, která **musí být vždy vytažena:**
 
-    - Pole **"SystemId"** s názvem **"id"**
-    - Pole **"SystemModifiedAt"** s názvem **"lastModifiedDateTime"** 
+- Pole **"SystemId"** s názvem **"id"**
+- Pole **"SystemModifiedAt"** s názvem **"lastModifiedDateTime"**
     
 > Je nezbytné dodržet přesný název pro tato pole!
 

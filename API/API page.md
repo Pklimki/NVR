@@ -27,7 +27,7 @@ ModifyAllowed = false;                         // Povolena modifikace záznamů
 
 # Políčka na stránce
 
-Zde nejsou žádné povinné vlastnosti. Název políčka, který bude viditelný na API page **musí začínat malým písmenem** - tzv. __**camelCasing**__.
+Zde nejsou žádné povinné vlastnosti. Název políčka, který bude viditelný na API page **musí začínat malým písmenem** - tzv. __**camelCasing**__. Pokud přidáme caption, tak také platí camelCasing pravidlo.
 
 ``` csharp
 layout

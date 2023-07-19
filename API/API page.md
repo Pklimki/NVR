@@ -55,8 +55,11 @@ layout
 
 ## Povinná políčka na stránce
 Existují 2 políčka, která **musí být vždy vytažena:**
-    - pole "SystemId" s názvem "id"
-    - pole "lastModifiedDateTime" s ==názvem== "lastModifiedDateTime" 
+
+    - Pole "SystemId" s názvem "id"
+    - Pole **"SystemModifiedAt"** s názvem ```c#
+    "lastModifiedDateTime"
+    ``` 
     -
 
 Zvolíme implementaci prostřednictvím vypočítaného políčka, které se bude zobrazovat pouze na konkrétních stránkách. **Nebudeme** tedy **vytvářet políčko (záznam) v tabulce**, jak jsme zvyklí. Na stránce vytvoříme proměnnou, kterou necháme zobrazit v políčku na této stránce. Na stránku přidáme triggery, při kterých dojde k vypočítání hodnoty této proměnné, jenž bude následně zobrazena.

@@ -9,20 +9,20 @@ API page programujeme velmi podobným způsobem, jako klasickou page v BC. Jsou 
 
 __**Vlastnosti:**__
 ``` csharp
-PageType = API;					            // Typ stránky = API
-Caption = 'customer', Locked = true;	    // Popis, Locked IDK ???????????????????????????????????????????????????????????????????
-APIPublisher = 'navertica';			        // Publisher	
-APIGroup = 'reporting';				        // Skupina API, která je pak součástí URL dotazu. Používá se pro nějaké logické dělení
-APIVersion = 'v1.0';				        // Verze API
-EntityName = 'customer';			        // Jednotné číslo entity
-EntitySetName = 'customers';			    // Množné číslo entity
-SourceTable = Customer;				        // Zdrojová tabulka
-DelayedInsert = true;				        // Povinná vlastnost na editovatelné API stránce (Editable = true). Funguje tak, že se nejprve zadají hodnoty všech polí a poté se záznam vloží najednou.
-ODataKeyFields = SystemId;			        // Vlastnost, která říká, podle čeho bude jednoznačně identifikovatelný daný záznam. V případě API je doporučeno používat SystemId, neboť bude pro daný záznam vždy stejný. SystemId je nějaké ID generované BC.
-Editable = false;				            // Editovatelná API page
-InsertAllowed = false;				        // Povoleno vkládání záznamů
-DeleteAllowed = false;				        // Povoleno odstraňování záznamů
-ModifyAllowed = false;				        // Povolena modifikace záznamů
+PageType = API;                                // Typ stránky = API
+Caption = 'customer', Locked = true;           // Popis, Locked IDK ???????????????????????????????????????????????????????????????????
+APIPublisher = 'navertica';                    // Publisher	
+APIGroup = 'reporting';                        // Skupina API, která je pak součástí URL dotazu. Používá se pro nějaké logické dělení
+APIVersion = 'v1.0';                           // Verze API
+EntityName = 'customer';                       // Jednotné číslo entity
+EntitySetName = 'customers';                   // Množné číslo entity
+SourceTable = Customer;                        // Zdrojová tabulka
+DelayedInsert = true;                          // Povinná vlastnost na editovatelné API stránce (Editable = true). Funguje tak, že se nejprve zadají hodnoty všech polí a poté se záznam vloží najednou.
+ODataKeyFields = SystemId;                     // Vlastnost, která říká, podle čeho bude jednoznačně identifikovatelný daný záznam. V případě API je doporučeno používat SystemId, neboť bude pro daný záznam vždy stejný. SystemId je nějaké ID generované BC.
+Editable = false;                              // Editovatelná API page
+InsertAllowed = false;                         // Povoleno vkládání záznamů
+DeleteAllowed = false;                         // Povoleno odstraňování záznamů
+ModifyAllowed = false;                         // Povolena modifikace záznamů
 ```
 
 # Políčka na stránce

@@ -5,9 +5,9 @@
 ```
 
 ## Přehled stavu appek
-[Složky s jednotlivými aplikacemi](https://navertica.visualstudio.com/BusinessCentral/_wiki/wikis/BusinessCentral.wiki?pagePath=/Compatibility&wikiVersion=GBwikiMaster)
+[Složka s jednotlivými aplikacemi](https://navertica.visualstudio.com/BusinessCentral/_wiki/wikis/BusinessCentral.wiki?pagePath=/Compatibility&wikiVersion=GBwikiMaster)
 
-[Složky můžeš aktualizovat/přidat pomocí pipeliny](https://navertica.visualstudio.com/BusinessCentral/_build?definitionId=1914&_a=summary)
+[Soubory můžeš aktualizovat/přidat pomocí pipeliny](https://navertica.visualstudio.com/BusinessCentral/_build?definitionId=1914&_a=summary)
 
 
 # Návody

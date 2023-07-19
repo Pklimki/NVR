@@ -9,9 +9,9 @@ API page programujeme velmi podobným způsobem, jako klasickou page v BC. Jsou 
 
 __**Vlastnosti:**__
 
-    * PageType = API;
-    * Hafo
-    * Laso
+    - `PageType = API;`
+    - `Caption = 'customer', Locked = true;` **IDK CO TO ZNAMENÁ**
+    - Laso
     -
     -
     -

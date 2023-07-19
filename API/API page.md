@@ -8,6 +8,7 @@
 API page programujeme velmi podobným způsobem, jako klasickou page v BC. Jsou zde jen nové vlastnosti, které je nezbytné nastavit, a zároveň existují i nějaké typografické rozdíly.
 
 __**Vlastnosti:**__
+
     * PageType = API;
     * Hafo
     * Laso

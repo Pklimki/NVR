@@ -15,11 +15,11 @@
    
 ## API
 1. [API Page](API/API%20page.md)
-2. [Linkování API položek]
-3. [Testování API]
+2. [Linkování API položek](API/Linkovani%20api%20polozek.md)
+3. [Testování API](API/Testovani%20API.md)
 
 ## CodeUnity
-1. [Parametr procedury s nebo bez var?]
+1. [Parametr procedury s nebo bez var?](Codeunit/Parametr%20procedury%20s%20var%20nebo%20bez%20var.md)
 
 ## Políčka
 1. [Calculated Fields - Vypočítaná hodnota na stránce](Fields/Vypocitana%20hodnota%20na%20page.md)

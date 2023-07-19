@@ -1,4 +1,4 @@
-# Nástěnka <br>
+# Nástěnka 
 > Pokud nechceš být ověřován při každém stahování/publikování appky, tak v launch json uprav položku **"primaryTenantDomain"**
 ``` csharp
 "primaryTenantDomain": "f97b6981-e782-49dd-9fd3-3e3753aece3b",

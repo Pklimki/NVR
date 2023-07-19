@@ -34,6 +34,8 @@ E -- Hodnoty pro výpočet --> F(CountPickingStatus) -- Vrací vypočtenou hodno
 
 Na stránku bude vytaženo políčko, jehož hodnota bude určena proměnnou **var PickingStatus**. Následně přidáme **triggery** **OnAfterGetRecord** a **OnAfterGetCurrRecord**, při kterých budeme volat vlastní funkci **PickingStatusForWhseShipHeader**. Tato funkce provede zmíněnou filtraci řádků dodávky ze skladu a získá potřebné hodnoty k výpočtu, které předá funkci **CountPickingStatus**, jenž výpočet realizuje a vrací vypočtenou hodnotu. Vypočtené hodnota je pak v (původní) funkci PickingStatusForWhseShipHeader přiřazena proměnné var PickingStatus, díky čemuž bude zobrazena na stránce.
 
+> Běžný způsob je ten, že se v triggerech na stránce volá lokální procedura **SetCalculatedFields()**, ve které je pak implementován výpočet. V tomto případě by se tedy v této funkci mohla volat funkce **PickingStatusForWhseShipHeader**, která by vracela hodnotu získanou díky funkci **CountPickingStatus**.
+
 ## Vytvoření políčka na stránce
 > Je třeba si připomenout, že pouze zobrazujeme hodnotu a **netvoříme žádný záznam v tabulce**!
 ``` csharp

@@ -4,6 +4,9 @@
 "primaryTenantDomain": "f97b6981-e782-49dd-9fd3-3e3753aece3b",
 ```
 
+## Fresenius
+[Launch.json s Anežčiným prostředím a QAčkem](Fresenius/launch.json)
+
 ## Přehled stavu appek
 [Složka s jednotlivými aplikacemi](https://navertica.visualstudio.com/BusinessCentral/_wiki/wikis/BusinessCentral.wiki?pagePath=/Compatibility&wikiVersion=GBwikiMaster)
 

@@ -15,7 +15,7 @@
             "launchBrowser": true,
             "enableLongRunningSqlStatements": true,
             "enableSqlInformationDebugger": true,
-            "primaryTenantDomain": "navertica.com",
+            "primaryTenantDomain": "f97b6981-e782-49dd-9fd3-3e3753aece3b",
             "tenant": "default"
         },
         {

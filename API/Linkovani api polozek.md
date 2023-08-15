@@ -8,7 +8,9 @@ Dopsat, až na to budeme mít nějaký příklad.
 
 Na straně BC bude připraveno API, které umožní zpracovat zpětnou notifikaci o vyskladněném množství na prodejní objednávce. 
 Endpoint bude mít následující strukturu: 
+![Struktura endpointu](Images/Api%20page%20link%20task.png)
 
+@Pklimki
 
 # API (page)
 

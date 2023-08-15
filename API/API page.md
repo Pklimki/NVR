@@ -11,6 +11,20 @@ __**PermissionSet:**__
 
 K api page musí vždy být vždycky permission set
 
+``` csharp
+F1 -> Generate permission sets as AL objects... -> Zadat jméno
+
+Může vypadat např takto (vzato z jiné appky)
+permissionset 83775 "NVR AWC DHL Conn F"
+{
+    Caption = 'NVR AWC DLH Connector Full';
+    Assignable = true;
+    Permissions = codeunit "NVR AWC DHL Service" = X,
+        page "NVR AWC Sales Order Lines API" = X,
+        page "NVR AWC Sales Orders API" = X;
+}
+```
+
 __**Vlastnosti:**__
 ``` csharp
 PageType = API;                                // Typ stránky = API

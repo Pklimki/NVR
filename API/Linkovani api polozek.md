@@ -2,8 +2,6 @@
 
 Stejně jako u [Datasetu](/Reports/Dataset.md) lze u [API Page](API%20page.md) položky prolinkovat do sebe. K tomu se, narozdíl od datasetu, používá klíčové slovo `part`. 
 
-Dopsat, až na to budeme mít nějaký příklad.
-
 # [Zadání tasku](https://navertica.visualstudio.com/BusinessCentral/_workitems/edit/92552/)
 
 Na straně BC bude připraveno API, které umožní zpracovat zpětnou notifikaci o vyskladněném množství na prodejní objednávce. 

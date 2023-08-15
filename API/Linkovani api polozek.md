@@ -1,6 +1,6 @@
 # Prolinkování API položek na API stránce
 
-Stejně jako u [Datasetu](/Reports/Dataset.md) lze u [API Page](API%20page.md) položky prolinkovat do sebe. K tomu se, narozdíl od datasetu, používá klíčové slovo **part**. 
+Stejně jako u [Datasetu](/Reports/Dataset.md) lze u [API Page](API%20page.md) položky prolinkovat do sebe. K tomu se, narozdíl od datasetu, používá klíčové slovo `part`. 
 
 Dopsat, až na to budeme mít nějaký příklad.
 
@@ -34,7 +34,7 @@ part(názevPoložky; názevAPIPage)
 
 __**PermissionSet:**__
 
-K api page musí vždy být vždycky permission set - viz 
+K api page musí vždy být vždycky permission set - [Jak vygenerovat PermissionSet](API%20page.md#PermissionSet)
 
 ``` csharp
 permissionset 83775 "NVR AWC DHL Conn F"

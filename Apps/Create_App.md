@@ -24,4 +24,4 @@
 12. Area: změnit podle zákazníka (např. Business Central/Summit)
 13. Application Layer: zvolit správnou vrstvu (měl by mi to říct architekt)
 
-<img src="/Apps/Pics/vytvoreni_app1.png" alt="MarineGEO circle logo" style="width: 250px;"/>
+<img src="/Apps/Pics/vytvoreni_app1.png" alt="MarineGEO circle logo" style="height: 350px;"/>

@@ -1,6 +1,6 @@
 # Vytvoření nové aplikace
 
-> Pokud zadání tasku obsahuje i vytvoření nové appky, je potřeba několik detailů od konzultanta, zbytek udělá pipelina
+> Pokud zadání tasku obsahuje i vytvoření nové appky, je potřeba udělat několik kroků, ve kterých musím mít informace od konzultanta a architekta
 
 ## Spuštění [Pipeliny na vytváření appek](https://navertica.visualstudio.com/BusinessCentral/_build?definitionId=313) s parametry:
 

@@ -15,3 +15,5 @@ Spuštěním [Pipeliny na vytváření appek](https://navertica.visualstudio.com
 
 **RUN**
 
+![Vytvoření appky](/Apps/Pics/vytvoreni_app.png)  
+

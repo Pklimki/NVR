@@ -20,5 +20,8 @@
 ## Přiřazení na které vrstvě bude aplikace
 9. Boards → Recently created → najít tu právě vytvořenou appku → Otevřít (je vedená jako **Feature**)
 10. Přiřadit architekta, který je na tom projektu (najdu v UserStory)
-11. Area: změnit podle zákazníka (např. Business Central/Summit)
-12. Application Layer: zvolit správnou vrstvu (měl by mi to říct architekt)
+11. Přepnout do záložky NVR
+12. Area: změnit podle zákazníka (např. Business Central/Summit)
+13. Application Layer: zvolit správnou vrstvu (měl by mi to říct architekt)
+
+<img src="/Apps/Pics/vytvoreni_app1.png" alt="MarineGEO circle logo" style="width: 250px;"/>

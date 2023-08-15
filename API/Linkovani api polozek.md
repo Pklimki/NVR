@@ -28,6 +28,15 @@ part(názevPoložky; názevAPIPage)
       SubPageLink = určuje, podle čeho se přiřadí řádky ke kontrétní hlavičce;
       SubPageView = umožňuje filtrovat řádky;
   }
+
+V našem případě je struktura následující:
+part(orderLines; "NVR AWC Sales Order Lines API")
+  {
+      EntityName = 'orderLine';
+      EntitySetName = 'orderLines';
+      SubPageLink = "Document Type" = Field("Document Type"), "Document No." = Field("No.");
+      SubPageView = where(Type = const("Item"));
+  }
 ```
 
 __**PermissionSet:**__

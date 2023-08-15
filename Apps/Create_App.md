@@ -15,6 +15,5 @@ Spuštěním [Pipeliny na vytváření appek](https://navertica.visualstudio.com
 
 **RUN**
 
-![Vytvoření appky]()
-<img src="/Apps/Pics/vytvoreni_app.png" alt="MarineGEO circle logo" style="width: 350px;"/>
+<img src="/Apps/Pics/vytvoreni_app.png" alt="MarineGEO circle logo" style="width: 250px;"/>
 

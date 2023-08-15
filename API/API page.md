@@ -7,6 +7,10 @@
 
 API page programujeme velmi podobným způsobem, jako klasickou page v BC. Jsou zde jen nové vlastnosti, které je nezbytné nastavit, a zároveň existují i nějaké typografické rozdíly.
 
+__**PermissionSet:**__
+
+K api page musí vždy být vždycky permission set
+
 __**Vlastnosti:**__
 ``` csharp
 PageType = API;                                // Typ stránky = API

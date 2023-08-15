@@ -1,13 +1,13 @@
 # Prolinkování API položek na API stránce
 
-Stejně jako u [Datasetu](/Reports/Dataset.md) lze položky prolinkovat do sebe. K tomu se, narozdíl od datasetu, používá klíčové slovo **part**. 
+Stejně jako u [Datasetu](/Reports/Dataset.md) lze u [API Page](API%20page.md) položky prolinkovat do sebe. K tomu se, narozdíl od datasetu, používá klíčové slovo **part**. 
 
 Dopsat, až na to budeme mít nějaký příklad.
 
+# [Zadání tasku](https://navertica.visualstudio.com/BusinessCentral/_workitems/edit/92552/)
 
-# API
-
-> **A**pplication **P**rogramming **I**nterface je komunikační rozhraní, prostřednictvím kterého si mohou 2 různé aplikace vyměňovat data. API má například i internetové bankovnictví nebo ChatGPT. Když se na nějakou stránku přihlašuješ prostřednictvím facebooku nebo gmailu, tak tato stránka využívá API! Díky API tak můžeš ve své aplikaci využít data jiné aplikace. 
+Na straně BC bude připraveno API, které umožní zpracovat zpětnou notifikaci o vyskladněném množství na prodejní objednávce. 
+Endpoint bude mít následující strukturu: 
 
 
 # API (page)
@@ -285,3 +285,6 @@ page 79055 "NVR VRI Customer API"
         TaxAreaDisplayNameGlobal := TaxAreaBuffer.GetTaxAreaDisplayName(Rec."Tax Area ID");
     end;
 }
+
+
+[def]: https://navertica.visualstudio.com/BusinessCentral/_workitems/edit/92552/

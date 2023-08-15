@@ -1,3 +1,3 @@
-* Vytvoření nové aplikace
+# Vytvoření nové aplikace
 
 test

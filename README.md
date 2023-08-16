@@ -16,7 +16,7 @@
 > git checkout názevVětve
 
 # Návody (řadit abecedně &#x1F609;)
-1. [Jak založit novou aplikaci = Haus.dopsat](New%20App/Zalozeni%20nove%20appky.md)
+1. [Jak založit novou aplikaci](NVR/Apps/Create_App.md)
    
 ## API
 1. [API Page](API/API%20page.md)

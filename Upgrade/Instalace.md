@@ -6,8 +6,15 @@
    - Otevřu soubor `<názevStředníVrstvy>.config` a přepíšu číslo verze v cestě
 
 2. Otevřu registry jako admin
-   - Local_Machine - System - Current Counter Set - Services - `**MicrosoftDynamicsNavServer<názevStředníVrstvy>**`
-      - **2x** přepíšu číslo verze v **ImagePath** 
+   - Local_Machine - System - Current Counter Set - Services - `MicrosoftDynamicsNavServer<názevStředníVrstvy>`
+      - **2x** přepíšu číslo verze v **ImagePath**
+    
+3. Zavřu a otevřu powerShell Skript
+4. Pokračuju v instalaci (Importuji nové moduly)
+5. Před konvertem databáze kontroluju, zda-li a čím jsou naplněny proměnné:
+   - `$DatabaseServer`
+   - `$DatabaseName`
+6. Konvertuji DB
 
 
 

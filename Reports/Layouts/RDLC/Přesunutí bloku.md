@@ -9,13 +9,9 @@ V rámci tasku bylo potřeba na faktuře přesunout tabulku na jinou pozici na s
 
 1. Pokud je layout .rdl tak ho přejměnovat na .rdlc
 2. Otevřít layout pomocí Visual Studia (ne code, velké visuálko - pozn. potřeba mít rozšíření Microsoft RDLC Report Designer)
-3. Najít si tu tabulku pro přesunutí
-<img src="/Reports/Images/Dataset/Presunuti_bloku1.png" style="width: 900px;"/>
-4. Kliknout do tabulky aby se zobrazili obdélníky na označování řádků (po levé straně), sloupců (nahoře) a **celé tabulky** (vlevo nahoře)
-   <img src="/Reports/Images/Dataset/Presunuti_bloku2.png" style="width: 400px;"/>
+3. Najít si tu tabulku pro přesunutí <img src="/Reports/Images/Dataset/Presunuti_bloku1.png" style="width: 900px;"/>
+4. Kliknout do tabulky aby se zobrazili obdélníky na označování řádků (po levé straně), sloupců (nahoře) a **celé tabulky** (vlevo nahoře) <img src="/Reports/Images/Dataset/Presunuti_bloku2.png" style="width: 400px;"/>
 5. Kliknout na označení celé tabulky levým → Na okraj tabulky pravým → Rectangle Properties → General → zaškrtnout **Keep contents together if possible**
-6. 
-7. → 
 
 
 poslední krok: zpět na rdlc

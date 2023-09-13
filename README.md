@@ -35,4 +35,7 @@
 
 ## Reporty
 1. [Dataset](Reports/Dataset.md)
+
+## Layouty
+1. [Přesunutí tabulky v RDLC layoutu](Reports/Layouts/RDLC/Přesunutí bloku.md)
    

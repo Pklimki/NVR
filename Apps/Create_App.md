@@ -27,5 +27,4 @@
 <img src="/Apps/Pics/vytvoreni_app1.png" alt="MarineGEO circle logo" style="height: 350px;"/>
 
 ## Přiřazení Featuru k User Story, ve kterém se řeší Task
-14. Zpět na záložku Details
-15. Vpravo dole Related World dát **add link**, tam to přidat
+15. Vpravo dole Related World dát **add link** → Related→ najít tu app

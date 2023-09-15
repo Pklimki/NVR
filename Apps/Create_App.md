@@ -7,10 +7,10 @@
 1. Target Project: BCčko / Summit (podle zákazníka)
 2. Application Name: Jméno appky (zadá konzultant)
 3. Repository Name: Jako jméno appky ale bez mezer
-4. Prefix: Vychází z názvu appky (zeptat konzultanta)
+4. Prefix: 3 znaky, vychází z názvu appky (první písmenka názvu appky, zkontrolovat že už to neexistuje)
 5. Object count: nechat 50
 6. Object start ID: vyplní se automaticky
-7. Branch: Podle QA zákazníka [najít v Enviroments](https://navertica.visualstudio.com/BusinessCentral/_search?text=QA*&type=workitem&lp=workitems-Project&filters=Projects%7BBusinessCentral%7DWork%20Item%20Types%7BEnvironment%7D&pageSize=25&includeFacets=false)
+7. Branch: Nejnovější [najít v Enviroments]
 8. Extension Type: PTE
 
 **RUN**
@@ -28,5 +28,4 @@
 
 ## Přiřazení Featuru k User Story, ve kterém se řeší Task
 14. Zpět na záložku Details
-15. Vpravo dole Related World dát **add link**
-16. 
+15. Vpravo dole Related World dát **add link**, tam to přidat

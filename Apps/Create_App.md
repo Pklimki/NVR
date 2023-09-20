@@ -7,7 +7,7 @@
 1. Target Project: BCčko / Summit (podle zákazníka)
 2. Application Name: Jméno appky (zadá konzultant)
 3. Repository Name: Jako jméno appky ale bez mezer
-4. Prefix: 3 znaky, vychází z názvu appky (první písmenka názvu appky, zkontrolovat že už to neexistuje → lze najít v Boards → Queries → Column options: filtr na Prefix Used)
+4. Prefix: NVR + (mezera) + 3 znaky, vychází z názvu appky (první písmenka názvu appky, [zkontrolovat že už to neexistuje → lze najít v Boards → Queries → Column options:](https://navertica.visualstudio.com/BusinessCentral/_queries/query/b821b1f9-1d3f-4b77-ac7a-3c07516eb7c1/) filtr na Prefix Used)
 5. Object count: nechat 50
 6. Object start ID: vyplní se automaticky
 7. Branch: Nejnovější [najít v Enviroments]

@@ -10,7 +10,7 @@
 4. Prefix: NVR + (mezera) + 3 znaky, vychází z názvu appky (první písmenka názvu appky, [zkontrolovat že už to neexistuje → lze najít v Boards → Queries → Column options:](https://navertica.visualstudio.com/BusinessCentral/_queries/query/b821b1f9-1d3f-4b77-ac7a-3c07516eb7c1/) ve sloupečku Prefix)
 5. Object count: nechat 50
 6. Object start ID: vyplní se automaticky
-7. Branch: Nejnovější [najít v Enviroments]
+7. Branch: Nejnovější
 8. Extension Type: PTE
 
 **RUN**

@@ -20,7 +20,7 @@
 ## Aplikace
 1. [Založení nové aplikace](Apps/Create_App.md)
 2. [Nasazení appky do ostré](Apps/App_to_prod.md)
-3. [Nasazení appky do pre-produ](Apps/App_to_preprod.md)
+3. [Nasazení appky do testu (někdy nazýván pre-prod)](Apps/App_to_preprod.md)
    
 ## API
 1. [API Page](API/API%20page.md)

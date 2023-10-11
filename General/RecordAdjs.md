@@ -7,7 +7,7 @@ Prostě shrnutí toho jak funguje úprava dat v tabulce
 - Init
 - Delete
 
-## Validate
+## [Validate](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/methods-auto/record/record-validate-method)
 
 Stejný jako **:=** ale navíc triggeruje [OnValidate](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/triggers-auto/field/devenv-onvalidate-field-trigger) !!
 

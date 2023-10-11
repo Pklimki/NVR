@@ -13,9 +13,13 @@ end
 A(Trigger) --> B[Funkce obsluhy události] -- HTTP Request --> C
 ```
 
-# API (page)
+## 1. When a HTTP request is received
 
-API page programujeme velmi podobným způsobem, jako klasickou page v BC. Jsou zde jen nové vlastnosti, které je nezbytné nastavit, a zároveň existují i nějaké typografické rozdíly.
+- Group: **HTTP**
+- Blok: **When a HTTP request is received**
+- U tohoto bloku volíme pouze, **kým** může být požadavek odeslán a metodu, kterou bude Request odeslán. Můžeme nadefinovat i nezbytnou část _tělíčka_ požadavku.
+- Blok sám **vygeneruje URL adresu**, na kterou pak v BC části budeme posílat HTTP Request --> **TODO ODKAZ**
+
 
 __**PermissionSet:**__
 

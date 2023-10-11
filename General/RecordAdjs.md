@@ -65,11 +65,11 @@ Funkce která změní hodnotu komentáře podle čísla dokumentu
 
 ## [Init](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/methods-auto/record/record-init-method) & [Insert](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/methods-auto/record/record-insert--method)
 
-Init = Inicializuje záznam
+**Init** = Inicializuje záznam
 
-**POZOR!** - mezi Init a Insert je potřeba nastavit VŠECHNY PRIMÁRNÍ KLÍČE záznamu
+***POZOR!*** - mezi Init a Insert je potřeba nastavit VŠECHNY PRIMÁRNÍ KLÍČE záznamu
 
-Insert = Vloží záznam do tabulky
+**Insert** = Vloží záznam do tabulky
 
 → Např. pokud jsem nafiltroval, nic to nenašlo a tak to chci vytvořit, nastavím tomu PK, vložím to do tabulky
 

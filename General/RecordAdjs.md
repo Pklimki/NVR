@@ -9,9 +9,8 @@ Prostě shrnutí toho jak funguje úprava dat v tabulce. Shrnutí termitů:
 - SetFilter
 - Reset
 - FindFirst
-- 
-**Úprava dat**:
   
+**Úprava dat**:
 - Validate
 - Modify
 - Init

@@ -7,7 +7,7 @@ Prostě shrnutí toho jak funguje úprava dat v tabulce
 - Init
 - Delete
 
-Příklad: Vadný kód ve kterém se pokouším změnit záznam v tabulce
+Příklad: Nefunkční kód ve kterém se pokouším změnit záznam v tabulce
 ```al
 // Funkce která změní hodnotu komentáře podle čísla dokumentu
 local procedure ChangeCommentToPrdel(DocumentNo: Code[20]) 

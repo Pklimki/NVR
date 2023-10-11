@@ -3,7 +3,6 @@
 Prostě shrnutí toho jak funguje úprava dat v tabulce. Shrnutí termitů:
 
 **Filtrování dat**:
-
 - Get
 - SetRange
 - SetFilter

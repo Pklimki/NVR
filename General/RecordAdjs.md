@@ -1,13 +1,13 @@
 # Práce se záznamy v tabulce
 
-Prostě shrnutí toho jak funguje úprava dat v tabulce
+Shrnutí metody pro úpravu dat v tabulce:
 
 - Validate
 - Modify
 - Init & Insert
 - Delete
 
-Příklad: Nefunkční kód ve kterém se pokouším změnit záznam v tabulce
+Příklad: Mějme tento nefunkční kód, ve kterém se pokoušíme změnit záznam v tabulce
 ```al
 // Funkce která změní hodnotu komentáře podle čísla dokumentu
 local procedure ChangeCommentToPrdel(DocumentNo: Code[20]) 
@@ -16,48 +16,47 @@ local procedure ChangeCommentToPrdel(DocumentNo: Code[20])
     begin
         CommentLine.SetRange("No.", DocumentNo); // Filtrace
         if CommentLine.FindFirst() then begin
-            CommentLine.Comment := "Prdel"; // pokus o změnu hodnoty komentáře
+            CommentLine.Comment := "Komentář obecný"; // pokus o změnu hodnoty komentáře
         end;                 
     end;
 ```
 
 ## [Validate](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/methods-auto/record/record-validate-method)
 
-Stejný jako **:=** ale navíc triggeruje [OnValidate](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/triggers-auto/field/devenv-onvalidate-field-trigger) !!
+Funkčně stejný jako **:=** ale navíc se stane [OnValidate](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/triggers-auto/field/devenv-onvalidate-field-trigger) trigger.
 
-→ Pro úpravu záznamu ho používat místo :=
-
-```al
-//local procedure ChangeCommentToPrdel(DocumentNo: Code[20]) 
-//    var
-//        CommentLine: Record "Sales Comment Line"; // Proměnná záznamu
-//    begin
-//        CommentLine.SetRange("No.", DocumentNo); // Filtrace
-//        if CommentLine.FindFirst() then begin
-            CommentLine.Comment := "Prdel"; // neudělá se OnValidate trigger
-            CommentLine.Validate(Comment, "Prdel"); // udělá se OnValidate trigger
-//        end;                 
-//    end;
-```
-
-## [Modify](https://learn.microsoft.com/en-us/dynamics-nav/modify-function--record-)
-
-Když sem udělal nějaký změny nad záznamem a **chci je propsat do tabulky**
-
-→ Pokud sem použil Validate, tak chci použít i Modify
-
-> jako parametr má Boolean který říká zda se má zavolat [OnModify](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/triggers-auto/table/devenv-onmodify-table-trigger) trigger
+→ Pro úpravu dat by se měl používat namísto :=
 
 ```al
-Funkce která změní hodnotu komentáře podle čísla dokumentu
 //local procedure ChangeCommentToPrdel(DocumentNo: Code[20]) 
 //    var
 //        CommentLine: Record "Sales Comment Line";
 //    begin
 //        CommentLine.SetRange("No.", DocumentNo);
 //        if CommentLine.FindFirst() then begin
-//            CommentLine.Validate(Comment, "Prdel");
-              CommentLine.Modify(true); // Když to neudělám, Validate bude k prdu
+            CommentLine.Comment := "Komentář obecný"; // provede se OnValidate trigger
+            CommentLine.Validate(Comment, "Komentář obecný"); // neprovede se OnValidate trigger
+//        end;                 
+//    end;
+```
+
+## [Modify](https://learn.microsoft.com/en-us/dynamics-nav/modify-function--record-)
+
+Slouží pro **propsání změn provedených nad záznamem do tabulky**.
+
+> Pokud byl použit Validate, pravděpodobně by měl být použit i Modify, pokud neměl být pouze zavolán OnValidate trigger
+
+> Jako parametr má Boolean který říká zda se má zavolat [OnModify](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/triggers-auto/table/devenv-onmodify-table-trigger) trigger.
+
+```al
+//local procedure ChangeCommentToPrdel(DocumentNo: Code[20]) 
+//    var
+//        CommentLine: Record "Sales Comment Line";
+//    begin
+//        CommentLine.SetRange("No.", DocumentNo);
+//        if CommentLine.FindFirst() then begin
+//            CommentLine.Validate(Comment, "Komentář obecný");
+              CommentLine.Modify(true); // bez Modify by se Validate změna nepropsala do taublky
 //        end;                 
 //    end;
 ```
@@ -70,9 +69,9 @@ Funkce která změní hodnotu komentáře podle čísla dokumentu
 
 **Insert** = Vloží záznam do tabulky
 
-→ Např. pokud jsem nafiltroval, nic to nenašlo a tak to chci vytvořit, nastavím tomu PK, vložím to do tabulky
+→ Např. pokud jsem nafiltroval, záznam jsem nenalezl a tudíž ho chci vytvořit = záznam inicializuji, nastavím mu PK, vložím ho do tabulky
 
-> Pozn.: **Rec** znamená ***aktuální stav záznamu*** tzn že se tam vloží ta hodnota, kterou jsem předtím nafiltroval
+> Pozn.: **Rec** znamená ***aktuální stav záznamu*** - tzn. záznam, nad kterým jsou momentálně prováděny změny
 
 ```al
 Funkce která změní hodnotu komentáře podle čísla dokumentu
@@ -90,7 +89,7 @@ Funkce která změní hodnotu komentáře podle čísla dokumentu
 
               CommentLine.Validate("Document Type", Rec."Document Type"); // Nastavení PK1
               CommentLine.Validate("No.", Rec."No."); // Nastavení PK2
-              CommentLine.Validate(Comment, "Prdel"); // komentář
+              CommentLine.Validate(Comment, "Komentář obecný"); // komentář
               
               CommentLine.Insert(true); // Vložení záznamu do tabulky + zavolání onInsert
 //        end;                
@@ -98,7 +97,7 @@ Funkce která změní hodnotu komentáře podle čísla dokumentu
 ```
 ## [Delete](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/methods-auto/record/record-delete-method)
 
-Pokud chci existující záznam smazat z tabulky
+Pro smazání existujícího záznamu z tabulky.
 
 ```al
  
@@ -107,7 +106,7 @@ Pokud chci existující záznam smazat z tabulky
 //        CommentLine: Record "Sales Comment Line";
 //    begin
 //        CommentLine.SetRange("No.", DocumentNo);
-          CommentLine.SetRange("Comment", 'Prosté slovíčko');
+          CommentLine.SetRange("Comment", 'Nevhodný komentář');
 //        if CommentLine.FindFirst() then begin
             CommentLine.Delete(true);
 //        end;                

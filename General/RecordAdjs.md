@@ -7,5 +7,9 @@ Prostě shrnutí toho jak funguje úprava dat v tabulce
 - Init
 - Delete
 
-## Zadání tasku
+## Validate
+
+Stejný jako **:=** ale navíc triggeruje *OnValidate* !!
+
+→ Měl by se používat místo :=
 

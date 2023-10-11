@@ -10,7 +10,7 @@ Shrnutí metody pro úpravu dat v tabulce:
 Příklad: Mějme tento nefunkční kód, ve kterém se pokoušíme změnit záznam v tabulce
 ```al
 // Funkce která změní hodnotu komentáře podle čísla dokumentu
-local procedure ChangeCommentToPrdel(DocumentNo: Code[20]) 
+local procedure ChangeComment(DocumentNo: Code[20]) 
     var
         CommentLine: Record "Sales Comment Line"; // Proměnná záznamu
     begin
@@ -28,7 +28,7 @@ Funkčně stejný jako **:=** ale navíc se stane [OnValidate](https://learn.mic
 → Pro úpravu dat by se měl používat namísto :=
 
 ```al
-//local procedure ChangeCommentToPrdel(DocumentNo: Code[20]) 
+//local procedure ChangeComment(DocumentNo: Code[20]) 
 //    var
 //        CommentLine: Record "Sales Comment Line";
 //    begin
@@ -49,7 +49,7 @@ Slouží pro **propsání změn provedených nad záznamem do tabulky**.
 > Jako parametr má Boolean který říká zda se má zavolat [OnModify](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/triggers-auto/table/devenv-onmodify-table-trigger) trigger.
 
 ```al
-//local procedure ChangeCommentToPrdel(DocumentNo: Code[20]) 
+//local procedure ChangeComment(DocumentNo: Code[20]) 
 //    var
 //        CommentLine: Record "Sales Comment Line";
 //    begin
@@ -75,7 +75,7 @@ Slouží pro **propsání změn provedených nad záznamem do tabulky**.
 
 ```al
 Funkce která změní hodnotu komentáře podle čísla dokumentu
-//local procedure ChangeCommentToPrdel(DocumentNo: Code[20]) 
+//local procedure ChangeComment(DocumentNo: Code[20]) 
 //    var
 //        CommentLine: Record "Sales Comment Line";
 //    begin
@@ -101,7 +101,7 @@ Pro smazání existujícího záznamu z tabulky.
 
 ```al
  
-//local procedure ChangeCommentToPrdel(DocumentNo: Code[20]) 
+//local procedure ChangeComment(DocumentNo: Code[20]) 
 //    var
 //        CommentLine: Record "Sales Comment Line";
 //    begin

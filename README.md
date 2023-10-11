@@ -30,7 +30,7 @@
 ## CodeUnity
 1. [Parametr procedury s nebo bez var?](Codeunit/Parametr%20procedury%20s%20var%20nebo%20bez%20var.md)
 
-## Obecné (nwm kam to zařadit)
+## Obecné
 1. [Úprava dat tabulky](General/RecordAdjs.md)
 
 ## Políčka

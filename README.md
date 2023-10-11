@@ -3,9 +3,10 @@
 ``` csharp
 "primaryTenantDomain": "f97b6981-e782-49dd-9fd3-3e3753aece3b",
 ```
-
+## Prostředí pro vývoj na v23
 [Launch.json s W1 prostředím na verzi 23](Compatibility/launchW1.json)
-[Launch.json s W1 prostředím na verzi 23](Compatibility/launchCZ.json)
+
+[Launch.json s CZ prostředím na verzi 23](Compatibility/launchCZ.json)
 
 ## Přehled stavu appek
 [Složka s jednotlivými aplikacemi](https://navertica.visualstudio.com/BusinessCentral/_wiki/wikis/BusinessCentral.wiki?pagePath=/Compatibility&wikiVersion=GBwikiMaster)

@@ -22,7 +22,7 @@ local procedure ChangeCommentToPrdel(DocumentNo: Code[20])
         CommentLine.SetRange("No.", DocumentNo); // Filtrace
         if CommentLine.FindFirst() then begin
             CommentLine.Comment := "Prdel"; // neudělá se OnValidate trigger
-            CommentLine.Validate(Comment, "Prdel2"); // udělá se OnValidate trigger
+            CommentLine.Validate(Comment, "Prdel"); // udělá se OnValidate trigger
         end;                 
     end;
 ```

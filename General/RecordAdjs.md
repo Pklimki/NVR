@@ -23,6 +23,7 @@ local procedure ChangeCommentToPrdel(DocumentNo: Code[20])
         if CommentLine.FindFirst() then begin
             CommentLine.Comment := "Prdel"; // neudělá se OnValidate trigger
             CommentLine.Validate(Comment, "Prdel"); // udělá se OnValidate trigger
+            <span style="color: red;">CommentLine.Comment := "Prdel";</span> // This part will be red
             // tady chybí 1 řádek → viz Modify
         end;                 
     end;

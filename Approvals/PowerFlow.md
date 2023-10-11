@@ -20,6 +20,8 @@ A(Trigger) --> B[Funkce obsluhy události] -- HTTP Request --> C
 - U tohoto bloku volíme pouze, **kým** může být požadavek odeslán a metodu, kterou bude Request odeslán. Můžeme nadefinovat i nezbytnou část _tělíčka_ požadavku.
 - Blok sám **vygeneruje URL adresu**, na kterou pak v BC části budeme posílat HTTP Request --> **TODO ODKAZ**
 
+![HTTP Request Received](Images/PA1.png)
+
 
 __**PermissionSet:**__
 

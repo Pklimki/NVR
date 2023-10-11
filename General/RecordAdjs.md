@@ -63,7 +63,7 @@ Funkce která změní hodnotu komentáře podle čísla dokumentu
 //    end;
 ```
 
-## [Init](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/methods-auto/record/record-init-method) & [Insert]https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/methods-auto/record/record-insert--method()
+## [Init](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/methods-auto/record/record-init-method) & [Insert](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/methods-auto/record/record-insert--method)
 
 Init = Inicializuje záznam
 
@@ -84,8 +84,14 @@ Funkce která změní hodnotu komentáře podle čísla dokumentu
 //            CommentLine.Validate(Comment, "Prdel");
 //            CommentLine.Modify(true); // Když to neudělám, Validate bude k prdu
 //        end;
-          else begin
+//        else begin
+              CommentLine.Init(); // Inicializace záznamu
 
-          end;                
+              CommentLine.Validate("Document Type", Rec."Document Type"); // Nastavení PK1
+              CommentLine.Validate("No.", Rec."No."); // Nastavení PK2
+              CommentLine.Validate(Comment, "Prdel"); // komentář
+              
+              CommentLine.Insert(true); // Vložení záznamu do tabulky + zavolání onInsert
+//        end;                
 //    end;
 ```

@@ -7,6 +7,20 @@ Prostě shrnutí toho jak funguje úprava dat v tabulce
 - Init
 - Delete
 
+Příklad: Mám tenhle kód ve kterym se pokusim změnit hodnotu komentáře
+```al
+// Funkce která změní hodnotu komentáře podle čísla dokumentu
+local procedure ChangeCommentToPrdel(DocumentNo: Code[20]) 
+    var
+        CommentLine: Record "Sales Comment Line"; // Proměnná záznamu
+    begin
+        CommentLine.SetRange("No.", DocumentNo); // Filtrace
+        if CommentLine.FindFirst() then begin
+            CommentLine.Comment := "Prdel"; // pokud o změnu komentáře
+        end;                 
+    end;
+```
+
 ## [Validate](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/methods-auto/record/record-validate-method)
 
 Stejný jako **:=** ale navíc triggeruje [OnValidate](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/triggers-auto/field/devenv-onvalidate-field-trigger) !!

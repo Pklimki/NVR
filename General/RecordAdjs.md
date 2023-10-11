@@ -63,3 +63,29 @@ Funkce která změní hodnotu komentáře podle čísla dokumentu
 //    end;
 ```
 
+## [Init](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/methods-auto/record/record-init-method) & [Insert]https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/methods-auto/record/record-insert--method()
+
+Init = Inicializuje záznam
+
+**POZOR!** - mezi Init a Insert je potřeba nastavit VŠECHNY PRIMÁRNÍ KLÍČE záznamu
+
+Insert = Vloží záznam do tabulky
+
+→ Např. pokud jsem nafiltroval, nic to nenašlo a tak to chci vytvořit, nastavím tomu PK, vložím to do tabulky
+
+```al
+Funkce která změní hodnotu komentáře podle čísla dokumentu
+//local procedure ChangeCommentToPrdel(DocumentNo: Code[20]) 
+//    var
+//        CommentLine: Record "Sales Comment Line";
+//    begin
+//        CommentLine.SetRange("No.", DocumentNo);
+//        if CommentLine.FindFirst() then begin
+//            CommentLine.Validate(Comment, "Prdel");
+//            CommentLine.Modify(true); // Když to neudělám, Validate bude k prdu
+//        end;
+          else begin
+
+          end;                
+//    end;
+```

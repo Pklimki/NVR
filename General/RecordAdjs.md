@@ -16,7 +16,7 @@ local procedure ChangeCommentToPrdel(DocumentNo: Code[20])
     begin
         CommentLine.SetRange("No.", DocumentNo); // Filtrace
         if CommentLine.FindFirst() then begin
-            CommentLine.Comment := "Prdel"; // pokud o změnu komentáře
+            CommentLine.Comment := "Prdel"; // pokus o změnu hodnoty komentáře
         end;                 
     end;
 ```

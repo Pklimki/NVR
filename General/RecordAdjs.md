@@ -28,7 +28,7 @@ local procedure ChangeCommentToPrdel(DocumentNo: Code[20])
     end;
 ```
 
-## Modify
+## [Modify](https://learn.microsoft.com/en-us/dynamics-nav/modify-function--record-)
 
 Když sem udělal nějaký změny nad záznamem a **chci je propsat do tabulky**
 

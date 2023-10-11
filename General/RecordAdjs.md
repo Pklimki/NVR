@@ -28,19 +28,17 @@ Stejný jako **:=** ale navíc triggeruje [OnValidate](https://learn.microsoft.c
 → Pro úpravu záznamu ho používat místo :=
 
 ```al
-// Funkce která změní hodnotu komentáře podle čísla dokumentu
-local procedure ChangeCommentToPrdel(DocumentNo: Code[20]) 
-    var
-        CommentLine: Record "Sales Comment Line"; // Proměnná záznamu
-    begin
-        CommentLine.SetRange("No.", DocumentNo); // Filtrace
-        if CommentLine.FindFirst() then begin
+ 
+//local procedure ChangeCommentToPrdel(DocumentNo: Code[20]) 
+//    var
+//        CommentLine: Record "Sales Comment Line"; // Proměnná záznamu
+//    begin
+//        CommentLine.SetRange("No.", DocumentNo); // Filtrace
+//        if CommentLine.FindFirst() then begin
             CommentLine.Comment := "Prdel"; // neudělá se OnValidate trigger
             CommentLine.Validate(Comment, "Prdel"); // udělá se OnValidate trigger
-            <span style="color: red;">CommentLine.Comment := "Prdel";</span> // This part will be red
-            // tady chybí 1 řádek → viz Modify
-        end;                 
-    end;
+//        end;                 
+//    end;
 ```
 
 ## [Modify](https://learn.microsoft.com/en-us/dynamics-nav/modify-function--record-)

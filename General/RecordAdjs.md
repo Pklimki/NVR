@@ -72,7 +72,7 @@ Funkce která změní hodnotu komentáře podle čísla dokumentu
 
 → Např. pokud jsem nafiltroval, nic to nenašlo a tak to chci vytvořit, nastavím tomu PK, vložím to do tabulky
 
-> Pozn.: Rec znamená *aktuální stav záznamu* tzn že se tam vloží ta hodnota, kterou jsem předtím nafiltroval
+> Pozn.: **Rec** znamená ***aktuální stav záznamu*** tzn že se tam vloží ta hodnota, kterou jsem předtím nafiltroval
 
 ```al
 Funkce která změní hodnotu komentáře podle čísla dokumentu

@@ -67,7 +67,7 @@ Funkce která změní hodnotu komentáře podle čísla dokumentu
 
 **Init** = Inicializuje záznam
 
-***POZOR!*** - mezi Init a Insert je potřeba nastavit VŠECHNY PRIMÁRNÍ KLÍČE záznamu
+***POZOR!*** - mezi Init a Insert je potřeba <ins>nastavit VŠECHNY PRIMÁRNÍ KLÍČE</ins> záznamu
 
 **Insert** = Vloží záznam do tabulky
 

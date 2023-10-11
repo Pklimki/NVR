@@ -9,7 +9,7 @@
 [CZ prostředí pro BCv23](https://Junior23CompatibilityCZ.dev.navertica.com/BC?tenant=default) - [launch.json](Compatibility/launchCZ.json)
 
 ## Přehled stavu appek
-[**Tabulky pro zápis**](StatusBadge)
+[**Tabulky pro zápis**](StatusBadge/)
 
 
 [Složka s jednotlivými aplikacemi na DevOpsech (staré)](https://navertica.visualstudio.com/BusinessCentral/_wiki/wikis/BusinessCentral.wiki?pagePath=/Compatibility&wikiVersion=GBwikiMaster)

@@ -38,23 +38,17 @@ Když sem udělal nějaký změny nad záznamem a **chci je propsat do tabulky**
 > jako parametr má Boolean který říká zda se má zavolat [OnModify](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/triggers-auto/table/devenv-onmodify-table-trigger) trigger
 
 ```al
-// Funkce která změní hodnotu komentáře podle čísla dokumentu
-local procedure ChangeCommentToPrdel(DocumentNo: Code[20]) 
-    var
-        CommentLine: Record "Sales Comment Line";
-    begin
-        CommentLine.SetRange("No.", DocumentNo);
-        if CommentLine.FindFirst() then begin
-            CommentLine.Comment := "Prdel";
-            CommentLine.Validate(Comment, "Prdel");
-            CommentLine.Modify(true); // Když to neudělám, Validate bude k prdu
-        end;                 
-    end;
+Funkce která změní hodnotu komentáře podle čísla dokumentu
+//local procedure ChangeCommentToPrdel(DocumentNo: Code[20]) 
+//    var
+//        CommentLine: Record "Sales Comment Line";
+//    begin
+//        CommentLine.SetRange("No.", DocumentNo);
+//        if CommentLine.FindFirst() then begin
+//            CommentLine.Comment := "Prdel";
+//            CommentLine.Validate(Comment, "Prdel");
+              CommentLine.Modify(true); // Když to neudělám, Validate bude k prdu
+//        end;                 
+//    end;
 ```
 
-<!-- This is an HTML block with inline CSS to control colors -->
-<div style="background-color: #f2f2f2; padding: 10px; border: 1px solid #ccc;">
-  <p style="color: blue;">This part is blue</p>
-  <p style="color: red;">This part is red</p>
-  <p style="color: green;">This part is green</p>
-</div>

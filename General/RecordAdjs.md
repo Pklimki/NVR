@@ -83,7 +83,7 @@ Funkce která změní hodnotu komentáře podle čísla dokumentu
 //        if CommentLine.FindFirst() then begin
 //            CommentLine.Validate(Comment, "Prdel");
 //            CommentLine.Modify(true); // Když to neudělám, Validate bude k prdu
-//        end;
+//        end
 //        else begin
               CommentLine.Init(); // Inicializace záznamu
 

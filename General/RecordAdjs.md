@@ -52,11 +52,9 @@ local procedure ChangeCommentToPrdel(DocumentNo: Code[20])
     end;
 ```
 
-```html
 <!-- This is an HTML block with inline CSS to control colors -->
 <div style="background-color: #f2f2f2; padding: 10px; border: 1px solid #ccc;">
   <p style="color: blue;">This part is blue</p>
   <p style="color: red;">This part is red</p>
   <p style="color: green;">This part is green</p>
 </div>
-```

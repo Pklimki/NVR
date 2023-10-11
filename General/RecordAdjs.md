@@ -94,7 +94,7 @@ Funkce která změní hodnotu komentáře podle čísla dokumentu
 //        end;                
 //    end;
 ```
-## [Delete](
+## [Delete](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/methods-auto/record/record-delete-method)
 
 Pokud chci existující záznam smazat z tabulky
 

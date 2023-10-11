@@ -9,7 +9,7 @@ Prostě shrnutí toho jak funguje úprava dat v tabulce
 
 ## Validate
 
-Stejný jako **:=** ale navíc triggeruje *OnValidate* !!
+Stejný jako **:=** ale navíc triggeruje [OnValidate](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/triggers-auto/field/devenv-onvalidate-field-trigger) !!
 
 → Měl by se používat místo :=
 

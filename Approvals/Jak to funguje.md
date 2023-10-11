@@ -8,7 +8,10 @@ D --> E(Approved) --> G((Reakce))
 D --> F(Not Approved) --> H((Reakce))
 end
 
-A(Trigger) --> B[Funkce obsluhy události] -- HTTP Request --> C
+subgraph ide2 [Business Central]
+A(Trigger) --> B[Funkce obsluhy události]
+end
+B -- HTTP Request --> C
 
 I(Uživatelská akce) --> J[Business Central] --> K((Power Automate)) --> L(Uživatelská akce) --> M((Power Automate))
 ```

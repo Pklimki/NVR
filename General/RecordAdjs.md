@@ -2,14 +2,14 @@
 
 Prostě shrnutí toho jak funguje úprava dat v tabulce. Shrnutí termitů:
 
-#### Filtrování dat:
+### Filtrování dat:
 - Get
 - SetRange
 - SetFilter
 - Reset
 - FindFirst
   
-#### Úprava dat:
+### Úprava dat:
 - Validate
 - Modify
 - Init

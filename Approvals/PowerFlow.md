@@ -12,6 +12,13 @@ end
 
 A(Trigger) --> B[Funkce obsluhy události] -- HTTP Request --> C
 ```
+_**PS:** **Konkrétní implementace a předávané parametry závisí vždy na konkrétním požadavku pro řešení.**_
+
+Jakmile dojde k obdržení HTTP Requestu, je z něj získán obsah _tělíčka_. Následně dojde pomocí předaných parametrů, kde klíčovou roli hraje hodnota **SystemID**, k získání:
+- Konkrétního záznamu v databázi - parametry záznamu lze vložit do schvalovacího emailu
+- URL záznamu (odkazd do BC) - opět lze vložit do schvalovacího emailu.
+
+V dalším kroku dojde k inicializaci Schválení a čeká se na jeho výsledek. Jakmile je obdržena odpověď, dojde k inicializaci proměnné pro zobrazení výsledku Schvalování uživateli, který o něj požádal. V posledním kroku pak následuje **switch-case** statement, který podle požadovaného zadání reaguje na výsledek.
 
 ## 1. When a HTTP request is received
 

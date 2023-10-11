@@ -28,7 +28,6 @@ Stejný jako **:=** ale navíc triggeruje [OnValidate](https://learn.microsoft.c
 → Pro úpravu záznamu ho používat místo :=
 
 ```al
- 
 //local procedure ChangeCommentToPrdel(DocumentNo: Code[20]) 
 //    var
 //        CommentLine: Record "Sales Comment Line"; // Proměnná záznamu
@@ -92,6 +91,23 @@ Funkce která změní hodnotu komentáře podle čísla dokumentu
               CommentLine.Validate(Comment, "Prdel"); // komentář
               
               CommentLine.Insert(true); // Vložení záznamu do tabulky + zavolání onInsert
+//        end;                
+//    end;
+```
+## [Delete](
+
+Pokud chci existující záznam smazat z tabulky
+
+```al
+ 
+//local procedure ChangeCommentToPrdel(DocumentNo: Code[20]) 
+//    var
+//        CommentLine: Record "Sales Comment Line";
+//    begin
+//        CommentLine.SetRange("No.", DocumentNo);
+          CommentLine.SetRange("Comment", 'Prosté slovíčko');
+//        if CommentLine.FindFirst() then begin
+            CommentLine.Delete(true);
 //        end;                
 //    end;
 ```

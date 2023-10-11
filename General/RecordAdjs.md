@@ -4,7 +4,7 @@ Prostě shrnutí toho jak funguje úprava dat v tabulce
 
 - Validate
 - Modify
-- Init
+- Init & Insert
 - Delete
 
 Příklad: Nefunkční kód ve kterém se pokouším změnit záznam v tabulce

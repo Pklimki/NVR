@@ -1,6 +1,6 @@
 # Přesunutí tabulky v RDLC layoutu
 
-V rámci tasku bylo potřeba na faktuře přesunout tabulku na jinou pozici na stránce tak, aby tabulka **držela pohromadě** → pokud by např. byly 2 řádky na konci 1. stránce a 3 řádky na začátku druhé, musí se přesunout celá tabulka na 2. stránku pohromadě.
+V rámci tasku bylo potřeba na faktuře přesunout tabulku na jinou pozici na stránce tak, aby tabulka **držela pohromadě** → pokud by např. byly 2 řádky na konci 1. stránky a 3 řádky na začátku druhé, musí se přesunout celá tabulka na 2. stránku pohromadě.
 
 
 <img src="/Reports/Images/Dataset/Presunuti_bloku.png" style="width: 700px;"/>

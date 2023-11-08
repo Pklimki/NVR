@@ -36,7 +36,7 @@
 
 ## Obecné
 1. [Úprava dat tabulky](General/RecordAdjs.md)
-2. [Datumy]
+2. [Datumy](General/Dates.md)
 
 ## Políčka
 1. [Calculated Fields - Vypočítaná hodnota na stránce](Fields/Vypocitana%20hodnota%20na%20page.md)

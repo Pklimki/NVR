@@ -36,6 +36,7 @@
 
 ## Obecné
 1. [Úprava dat tabulky](General/RecordAdjs.md)
+2. [Datumy]
 
 ## Políčka
 1. [Calculated Fields - Vypočítaná hodnota na stránce](Fields/Vypocitana%20hodnota%20na%20page.md)
@@ -44,5 +45,9 @@
 1. [Dataset](Reports/Dataset.md)
 
 ## Layouty
-1. [Přesunutí tabulky v RDLC layoutu](Reports/Layouts/RDLC/Přesunutí%20bloku.md)
+1. [Přesunutí tabulky v RDLC layoutu](Reports/Layouts/RDLC/Přesunutí%20bloku.md
+
+
+
+   
    

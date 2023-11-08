@@ -1,8 +1,9 @@
 # Nástěnka 
 > Pokud nechceš být ověřován při každém stahování/publikování appky, tak v launch json uprav položku **"primaryTenantDomain"**
-``` csharp
-"primaryTenantDomain": "f97b6981-e782-49dd-9fd3-3e3753aece3b",
-```
+>``` csharp
+>"primaryTenantDomain": "f97b6981-e782-49dd-9fd3-3e3753aece3b",
+>```
+  
 ## Prostředí pro vývoj na v23
 [W1 prostředí pro BCv23](https://junior23compatibilityw1.dev.navertica.com/BC?tenant=default) - [launch.json](Compatibility/launchW1.json)
 
@@ -18,6 +19,15 @@
 
 ## Klonování cizí větve
 > git checkout názevVětve
+
+##  Nefunkční Enviroment
+> 1. V Azure DevOps vlézt na nefunkční Enviroment
+>       - Enviroment Sate → ***Restart Container***
+>       - Save
+>       - cca 10 min po ***Created*** stavu počkat
+> 2.  Smazat v historii prohlížete cookies
+> 3.  V CMD napsat příkaz ***ipconfig /flushdns***
+> 4.  Enviroment State → ***Rebuild***
 
 # Návody (řadit abecedně &#x1F609;)
 

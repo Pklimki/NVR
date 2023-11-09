@@ -20,6 +20,9 @@
 ## Klonování cizí větve
 > git checkout názevVětve
 
+## Cesta k grafům závislotí Appek
+> \\lib\Packages\_BCApps\__Graphs
+
 ##  Nefunkční Enviroment
 > 1. V Azure DevOps vlézt na nefunkční Enviroment
 >       - Enviroment Sate → ***Restart Container***

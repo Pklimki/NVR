@@ -20,7 +20,7 @@
 ## Klonování cizí větve
 > git checkout názevVětve
 
-## Cesta k grafům závislotí Appek
+## Cesta k grafům závislostí Appek
 > \\lib\Packages\_BCApps\__Graphs
 
 ##  Nefunkční Enviroment

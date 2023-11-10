@@ -21,7 +21,9 @@
 > git checkout názevVětve
 
 ## Cesta k grafům závislostí Appek
-> \\lib\Packages\_BCApps\__Graphs
+>``` yaml
+>\\lib\Packages\_BCApps\__Graph
+>```
 
 ##  Nefunkční Enviroment
 > 1. V Azure DevOps vlézt na nefunkční Enviroment

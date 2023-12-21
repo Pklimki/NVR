@@ -3,7 +3,7 @@
   
 * Datové typy datumů:
   - [Date](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/methods-auto/date/date-data-type)
-    - Pokud chceme do datového typu Date vložit nějakou hodnotu, tak je třeba dodžet syntax:
+    - Pokud chceme do datového typu Date vložit nějakou hodnotu, tak je třeba dodržet syntax:
   
       → ***yyyymmddD*** - ***yyyy*** je rok, ***mm*** je měsíc, ***dd*** je den a pak "***D***", které je nutno zadat
 
@@ -30,7 +30,7 @@
           TodayDate := Today;
           Message(DateMsg, TodayDate);  
       end;
-      // Tento kod poté v BC vratí message okno s datumem z operačního systému (např. 12/03/20)
+      // Tento kod poté v BC vrátí message okno s datumem z operačního systému (např. 12/03/20)
       ```
   - [Time()](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/methods-auto/system/system-time-method)
     - **Time** můžeme využít k získání času z operačního systému. Je to ovlivněno opět nastavením BC. 
@@ -46,7 +46,7 @@
           CurrentTime := Time;
           Message(TimeMsg, CurrentTime);  
       end;
-      // Tento kod poté v BC vratí message okno s časem z operačního systému (např. 9:08:03 AM)
+      // Tento kod poté v BC vrátí message okno s časem z operačního systému (např. 9:08:03 AM)
       ```
   - [CurrentDateTime()](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/methods-auto/system/system-currentdatetime-method)
     - **Time** můžeme využít k získání času z operačního systému. Je to ovlivněno opět nastavením BC. 
@@ -62,7 +62,7 @@
           CurrentTime := Time;
           Message(TimeMsg, CurrentTime);  
       end;
-      // Tento kod poté v BC vratí message okno s časem z operačního systému (např. 9:08:03 AM)
+      // Tento kod poté v BC vrátí message okno s časem z operačního systému (např. 9:08:03 AM)
       ```
   - [WorkDate()](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/methods-auto/system/system-workdate-method)
     - **WorkDate** můžeme využít k získání pracovního dne, který můžeme najít v nastavení BC.  
@@ -78,15 +78,98 @@
           WorkDate := WorkDate;
           Message(DateMsg, WorkDate);  
       end;
-      // Tento kod poté v BC vratí message okno s pracovním datumem (např. 04/06/20)
+      // Tento kod poté v BC vrátí message okno s pracovním datumem (např. 04/06/20)
       ```
   - [CalcDate()](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/methods-auto/system/system-calcdate-string-date-method)
-    - **CalcDate** 
+    - **CalcDate**
       ```al
-      NewDate := System.CalcDate(DateExpression: Text [, Date: Date]);
+      NewDate := System.CalcDate(DateExpression: String [, Date: Date])
+      ```
+    - Příklad použití:
+      ```al
+      var
+          Expr1:  Text[30];
+          Expr2:  Text[30];
+          Expr3:  Text[30];
+          RefDate: Date;
+          Date1: Date;
+          Date2: Date;
+          Date3: Date;
+          RefDateTxt: Label 'The reference date is: %1\\';
+          Expr1Txt: Label 'The expression %2 returns %3\\';
+          Expr2Txt: Label 'The expression %4 returns %5\\';
+          Expr3Txt: Label 'The expression %6 returns %7\\';
+      begin
+          Expr1 := '<CQ+1M-10D>'  // Current Quarter + 1 Month - 10 Days
+          Expr2 := '<-WD2>'       // The last WeekDay no.2 (last Thuesday)
+          Expr3 := '<CM+30D>'     // Current Month + 30 Days
+          RefDate := Today;
+          Date1 := CalcDate(Expr1, RefDate);
+          Date2 := CalcDate(Expr2, RefDate);
+          Date3 := CalcDate(Expr3, RefDate);
+          Message(RefDateTxt + Expr1Txt + Expr2Txt + Expr3Txt, RefDate, Expr1, Date1, Expr2, Date2, Expr3, Date3);
+      end;
+      /** Tento kod poté v BC vrátí message okno se zprávou popisující datum (např.
+      The reference date is: 12/03/20
+      The expression <CQ+1M-10D> returns 01/21/21
+      The expression <-WD2> returns 12/01/20
+      The expression <CM+30D> returns 01/30/21
+      )
+      **/
       ```
   - [Date2DMY()](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/methods-auto/system/system-date2dmy-method)
+    - **DT2DMY** 
+      ```al
+      Number := System.Date2DMY(Date: Date, Value: Integer)
+      ```
+    - Příklad použití:
+      ```al
+      var
+          InputDate: Date;
+          Day: Integer;
+          Month: Integer;
+          Year: Integer;
+          DateMsg: Label 'Today is a day %1 of month %2 of the year %3';
+      begin
+          InputDate := Today;
+          Day := Date2DMY(InputDate, 1);
+          Month := Date2DMY(InputDate, 2);
+          Year := Date2DMY(InputDate,3);
+          Message(DateMsg, Day, Month, Year);
+      end;
+      /** Tento kod poté v BC vrátí message okno se zprávou popisující datum (např.
+      Today is a day 3 of month 12 of the year 2020
+      )
+      **/
+      ```
   - [Date2DWY()](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/methods-auto/system/system-date2dmy-method)
+    - **DT2DWY** 
+      ```al
+      Number := System.Date2DWY(Date: Date, Value: Integer)
+      ```
+    - Příklad použití:
+      ```al
+      var
+          InputDate: Date;
+          DayOfWeek: Integer;
+          WeekNumber: Integer;
+          Year: Integer;
+          DateMsg: Label 'The date %1 corresponds to: \\The day of the week: %2 \\The week number: %3 \\ The year: %4';
+      begin
+          InputDate := Today;
+          DayOfWeek := Date2DWY(InputDate, 1);
+          WeekNumber := Date2DWY(InputDate, 2);
+          Year := Date2DWY(InputDate,3);
+          Message(DateMsg, DayOfWeek, WeekNumber, Year);
+      end;
+      /** Tento kod poté v BC vrátí message okno se zprávou popisující datum (např.
+      The date 12/03/20 corresponds to:
+      The day of the week: 4
+      The week number: 49
+      The year: 2020
+      )
+      **/
+      ```
   - [DT2Time()](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/methods-auto/system/system-dt2time-method)
     - **DT2Time** 
       ```al
@@ -103,7 +186,7 @@
           Date1 := DT2Time(DateTime1);
           Message(Format(Time1));
       end;
-      // Tento kod poté v BC vratí message okno s přesným časem (např. 1:10:47 PM)
+      // Tento kod poté v BC vrátí message okno s přesným časem (např. 1:10:47 PM)
       ```
   - [DT2Date()](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/methods-auto/system/system-dt2date-method)
     - **DT2Date** 
@@ -121,7 +204,7 @@
           Date1 := DT2Date(DateTime1);
           Message(Format(Date1));
       end;
-      // Tento kod poté v BC vratí message okno s datumem (např. 11/28/22)
+      // Tento kod poté v BC vrátí message okno s datumem (např. 11/28/22)
       ```
 
 ## Příklady z praxe:

@@ -2,7 +2,7 @@
 ## Zadání
 Zákazník chtěl na fakturách zaměnit určitá pole za jiná nebo je úplně smazat. V průběhu tasku bylo také zjištěno, že bude i potřeba vytvořit nové pole pro servisní e-mail (toto pole bylo potřeba u dvou faktur).
 
-V rámci tasku se měli upravit tři faktury -> Layouty:
+V rámci tasku se měly upravit tři faktury -> Layouty:
 | Nabídka Servisu                                                                                         | Servisní Zakázka                                                             | Provedený Servis - náhled |                
 | ----------------------                                                                                  | ----------------------                                                       | ---------------------- |
 | <img src="/Reports/Images/Dataset/NabidkaServisu.png" style="width: 500px;"/>                           | <img src="/Reports/Images/Dataset/ServisZakazka.png" style="width: 500px;"/> | <img src="/Reports/Images/Dataset/NahledServisu.png" style="width: 500px;"/> |
@@ -70,5 +70,6 @@ To znamená že v Expression pole vidíme "Code.GetData(x)".
      - Zaměnění polí:
        > Pokud tady chceme změnit obsah pole za jiný obsah, musíme jít do Expression růžového pole a tam odpočítat pole na x-tém pořadí (dle Get.Data(x)). Poté změníme název pole za naše.
      - Nová pole:
-       > Pokud chceme nové pole přidat. Přidáme ho do růžového pole na x-té místo (většinou nakonec), a kde chceme data, zadáme "Code.GetData(x)".
+       > Pokud chceme nové pole přidat. Přidáme ho do růžového pole na x-té místo (většinou nakonec), a kde chceme data z pole, zadáme "Code.GetData(x)".
+   * Nesmíme zapomenout toto udělat jak pro **labely** tak pro **hodnoty** polí.
    

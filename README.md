@@ -50,7 +50,7 @@
 1. [Parametr procedury s nebo bez var?](Codeunit/Parametr%20procedury%20s%20var%20nebo%20bez%20var.md)
 
 ## Obecné
-1. [Datumy](General/Dates.md)
+1. [Datumy v ALu](General/DatesAL.md)
 2. [Úprava dat tabulky](General/RecordAdjs.md)
 
 

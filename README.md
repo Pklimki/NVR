@@ -61,6 +61,7 @@
 
 ## Layouty
 1. [Přesunutí tabulky v RDLC layoutu](Reports/Layouts/RDLC/Přesunutí%20bloku.md)
+2. [Úprava a vložený nových polí](Reports/Layouts/RDLC/Úprava%20a%20vložený%20nových%20polí.md)
 
 
 

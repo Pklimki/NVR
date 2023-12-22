@@ -1,4 +1,4 @@
-# Práce s datumy
+# Práce s datumy v ALu
 * Nastavení v BC ovlivní, jakým formátem jsou datumy zadávány/vypisovány. Ovlivňuje to nastavení oblasti (Region) a jazyka (Language).
   
 * Datové typy datumů:

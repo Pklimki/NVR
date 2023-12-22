@@ -134,7 +134,10 @@
       **/
       ```
   - [Date2DMY()](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/methods-auto/system/system-date2dmy-method)
-    - **DT2DMY** 
+    - **DT2DMY** získá den (Day), měsíc (Month), nebo rok (Year) z datumového typu (Date).
+      - Hodnota 1 odpovídá dnu (1-31).
+      - Hodnota 2 odpovídá měsíci (1-12).
+      - Hodnota 3 odpovídá roku.
       ```al
       Number := System.Date2DMY(Date: Date, Value: Integer)
       ```
@@ -159,7 +162,10 @@
       **/
       ```
   - [Date2DWY()](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/methods-auto/system/system-date2dmy-method)
-    - **DT2DWY** 
+    - **DT2DWY** získá den v týdnu (DayOfWeek), číslo týdne (WeekNumber), nebo rok (Year) z datumového typu (Date).
+      - Hodnota 1 odpovídá dnu v týdnu (1-7, Pondělí = 1).
+      - Hodnota 2 odpovídá číslu týdne (1-53).
+      - Hodnota 3 odpovídá roku.
       ```al
       Number := System.Date2DWY(Date: Date, Value: Integer)
       ```

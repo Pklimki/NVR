@@ -9,11 +9,11 @@ V rámci tasku se měly upravit tři faktury -> Layouty:
 
 ## Postup
 
-1. Zjištění Appek, ve kterých se reporty s layouty nachází (včetně kde je najít v BC).
+1. **Zjištění Appek, ve kterých se reporty s layouty nachází (včetně kde je najít v BC).**
    * Při hledání, kde se reporty v BC tisknou může pomoc "Výběr Sestav" a "Rozvržení Sestav".
    * Pokud je ta faktura tisknuta Microsoftí Appkou, tak bude třeba udělat rozšíření daného Reportu a vytvořit nový layout, do kterého zkopírujeme obsah toho oficiálního. Poté můžeme provádět změny.
      
-2. Přidání potřebných polí do reportu.
+2. **Přidání potřebných polí do reportu.**
    * Příklad jak vypadá implementace nových polí do reportu:
     ```al
     reportextension 71895 "NVR IRPCZ Service Order CZL" extends "Service Order CZL"
@@ -63,13 +63,13 @@ V **rendering** poté upřesníme jaké layouty budeme v tomto reportu používa
          }
         ...
       ```
-4. Úprava layoutu v Report Builderu.
+4. **Úprava layoutu v Report Builderu.**
    * "Open Externally" na daném layoutu.
    * Hodnoty polí v layoutu jsou buďto vložena přímo (v "Expression" na poli vidíme název pole + ".Value"). V ten moment je záměna/tvoření nových polí jednoduchá (stačí změnit tyto hodnoty). Dále mohou být data tahána z tvz. neviditelných polí (v Builderu jsou vidět jako růžová). 
 To znamená že v Expression pole vidíme "Code.GetData(x)".
         <img src="/Reports/Images/Dataset/ReportBuilderPole.png" style="width: 700px;"/>
      - Zaměnění polí:
-       > Pokud tady chceme změnit obsah pole za jiný obsah, musíme jít do Expression růžového pole a tam odpočítat pole na x-tém pořadí (dle Get.Data(x)). Poté změníme název pole za naše.
+       > Pokud tady chceme změnit obsah pole za jiný, musíme jít do Expression růžového pole a tam odpočítat pole na x-tém pořadí (dle Get.Data(x)). Poté změníme název pole za naše.
      - Nová pole:
        > Pokud chceme nové pole přidat. Přidáme ho do růžového pole na x-té místo (většinou nakonec), a kde chceme data z pole, zadáme "Code.GetData(x)".
    * Nesmíme zapomenout toto udělat jak pro **labely** tak pro **hodnoty** polí.

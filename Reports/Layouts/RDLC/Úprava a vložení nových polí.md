@@ -67,9 +67,11 @@ V **rendering** poté upřesníme jaké layouty budeme v tomto reportu používa
    * "Open Externally" na daném layoutu.
    * Hodnoty polí v layoutu jsou buďto vložena přímo (v "Expression" na poli vidíme název pole + ".Value"). V ten moment je záměna/tvoření nových polí jednoduchá (stačí změnit tyto hodnoty). Dále mohou být data tahána z tvz. neviditelných polí (v Builderu jsou vidět jako růžová). 
 To znamená že v Expression pole vidíme "Code.GetData(x)".
+        <img src="/Reports/Images/Dataset/ReportBuilderPole.png" style="width: 700px;"/>
      - Zaměnění polí:
        > Pokud tady chceme změnit obsah pole za jiný obsah, musíme jít do Expression růžového pole a tam odpočítat pole na x-tém pořadí (dle Get.Data(x)). Poté změníme název pole za naše.
      - Nová pole:
        > Pokud chceme nové pole přidat. Přidáme ho do růžového pole na x-té místo (většinou nakonec), a kde chceme data z pole, zadáme "Code.GetData(x)".
    * Nesmíme zapomenout toto udělat jak pro **labely** tak pro **hodnoty** polí.
+
    

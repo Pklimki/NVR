@@ -3,18 +3,36 @@
   
 * Datové typy datumů:
   - [Date](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/methods-auto/date/date-data-type)
+    - Označuje datum v rozmezí od *1.ledna 1753* do *31.prosince 9999*. 
     - Pokud chceme do datového typu Date vložit nějakou hodnotu, tak je třeba dodržet syntax:
   
-      → ***yyyymmddD*** - ***yyyy*** je rok, ***mm*** je měsíc, ***dd*** je den a pak "***D***", které je nutno zadat
+      → ***yyyymmddD*** - ***yyyy*** je rok, ***mm*** je měsíc, ***dd*** je den a pak "***D***", které je nutno zadat.
 
+  - [Time](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/methods-auto/time/time-data-type)
+    - Označuje čas v rozmezí od *00:00:00:0000* do *23:59:59:9999*. Nevyplněný čas se specifikuje na 0T.
+      
   - [DateTime](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/methods-auto/datetime/datetime-data-type)
+    - Označuje datum a čas v rozmezí od *1.ledna 1753 00:00:00:0000* do *31.prosince 9999 23:59:59:9999*.
  
   - [DateFormula](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/methods-auto/dateformula/dateformula-data-type)
 
 * Užitečné metody pro práci s daty:
   - [CreateDateTime](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/methods-auto/system/system-createdatetime-method)
+    -  **CreateDateTime** můžeme využít, když chceme vytvořit DateTime objekt z datumu (Date) a času (Time).
       ```al
       Datetime := System.CreateDateTime(Date: Date, Time: Time);
+      ```
+  - Příklad použití:
+      ```al
+      var
+          Date1: Date;
+          DateTime1: DateTime;
+      begin
+          Date1 := Today;
+          DateTime1 := CreateDataTime(Date1, 0T);
+          Message(Format(DateTime1));  
+      end;
+      // Tento kod poté v BC vrátí message okno s datumem a časem (např. 11/28/22 12:00 AM).
       ```
   - [Today()](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/methods-auto/system/system-today-method)
     - **Today** můžeme využít k získání data z operačního systému. Je to ovlivněno opět nastavením BC. 

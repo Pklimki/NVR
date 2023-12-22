@@ -82,9 +82,24 @@
       // Tento kod poté v BC vrátí message okno s pracovním datumem (např. 04/06/20).
       ```
   - [CalcDate()](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/methods-auto/system/system-calcdate-string-date-method)
-    - **CalcDate**
+    - **CalcDate** počítá nové datum dle výrazu (Date Expression) a reference na datum (Reference Date).
       ```al
       NewDate := System.CalcDate(DateExpression: String [, Date: Date])
+      ```
+    - Výraz může mít jakoukoli délku a čte se zleva doprava po jednom podvýrazu (SubExpression) za druhým. Syntax je následující:
+      ```
+      - DateExpression = [<SubExpression>][<SubExpression>][<SubExpression>]...
+      - <SubExpression> = [<Sign>]<Term>-<Sign> = +|-
+      - <Term> = <Number><Unit>|<Unit><Number>|<Prefix><Unit>
+      - <Number> = pozitivní ingeter
+      - <Unit> = D|WD|W|M|Q|Y  (D=day, WD=weekday, W=week, M=month, Q=quarter, Y= year)
+      - <Prefix> = C (C=current)
+      ```
+    - Výraz se skládá z 0/1/2/3 podvýrazů. Každý podvýraz obsahuje volitelné znaménko (Sign) a termín (Term). Toto jsou typické příklady termínů:
+      ```
+      - 30D (30 dní (Day) = <Number><Unit>)
+      - WD2 (2. den v týdnu (WeekDay2) = <Unit><Number>)
+      - CW (aktuální týden (CurrentWeek) = <Prefix><Unit>)
       ```
     - Příklad použití:
       ```al
@@ -173,7 +188,10 @@
       ```
       
   - [DMY2Date()](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/methods-auto/system/system-dmy2date-method)
-    - **DMY2Date** 
+    - **DMY2Date** získá datum dle dne (Day), měsíce (Month) a roku (Year).
+      - Day: Číslo dne v měsíce (1-31).
+      - Month: Číslo měsíce v roce (1-12).
+      - Year: Čtyřmístné číslo pro rok.
       ```al
       Date := System.DMY2Date(Day: Integer [, Month: Integer] [, Year: Integer])
       ```
@@ -199,7 +217,10 @@
       ```
 
   - [DWY2Date()](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/methods-auto/system/system-dwy2date-method)
-    - **DWY2Date** 
+    - **DWY2Date** získá datum dle dnu v týdnu (WeekDay), týdnu (Week) a roce (Year).
+      - WeekDay: Číslo dne v týdnu (1-7). Pondělí je číslo 1.
+      - Week: Číslo týdne. 1. týden je první týden v roce, který má 4 a více dní.
+      - Year: Čtyřmístné číslo pro rok.
       ```al
       Date := System.DWY2Date(WeekDay: Integer [, Week: Integer] [, Year: Integer])
       ```

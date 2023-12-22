@@ -39,7 +39,7 @@
       | 20.duben 2022 | 1Q+1M+CM | 31.srpen 2022 | Plus čtvrtletí a 1 měsíc (konec měsíce) |
 
 * Užitečné metody pro práci s daty:
-  - [CreateDateTime](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/methods-auto/system/system-createdatetime-method)
+  - [CreateDateTime()](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/methods-auto/system/system-createdatetime-method)
     -  **CreateDateTime** můžeme využít, když chceme vytvořit DateTime objekt z datumu (Date) a času (Time).
       ```al
       Datetime := System.CreateDateTime(Date: Date, Time: Time);
@@ -294,7 +294,7 @@
       ```  
       
   - [DT2Time()](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/methods-auto/system/system-dt2time-method)
-    - **DT2Time** 
+    - **DT2Time** získá časovou část z DateTime objektu.
       ```al
       Time := System.DT2Time(Datetime: DateTime)
       ```
@@ -315,7 +315,7 @@
       **/
       ```
   - [DT2Date()](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/methods-auto/system/system-dt2date-method)
-    - **DT2Date** 
+    - **DT2Date** získá datumovou část z DateTime objektu.
       ```al
       Date :=   System.DT2Date(Datetime: DateTime)
       ```

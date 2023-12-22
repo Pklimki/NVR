@@ -3,18 +3,40 @@
   
 * Datové typy datumů:
   - [Date](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/methods-auto/date/date-data-type)
-    - Označuje datum v rozmezí od *1.ledna 1753* do *31.prosince 9999*. 
+    - **Date** označuje datum v rozmezí od *1.ledna 1753* do *31.prosince 9999*. 
     - Pokud chceme do datového typu Date vložit nějakou hodnotu, tak je třeba dodržet syntax:
   
       → ***yyyymmddD*** - ***yyyy*** je rok, ***mm*** je měsíc, ***dd*** je den a pak "***D***", které je nutno zadat.
 
   - [Time](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/methods-auto/time/time-data-type)
-    - Označuje čas v rozmezí od *00:00:00:0000* do *23:59:59:9999*. Nevyplněný čas se specifikuje na 0T.
+    - **Time** označuje čas v rozmezí od *00:00:00:0000* do *23:59:59:9999*. Nevyplněný čas se specifikuje na 0T.
       
   - [DateTime](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/methods-auto/datetime/datetime-data-type)
-    - Označuje datum a čas v rozmezí od *1.ledna 1753 00:00:00:0000* do *31.prosince 9999 23:59:59:9999*.
+    - **DateTime** označuje datum a čas v rozmezí od *1.ledna 1753 00:00:00:0000* do *31.prosince 9999 23:59:59:9999*.
  
   - [DateFormula](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/methods-auto/dateformula/dateformula-data-type)
+    - **DateFormula** označuje vzorec obsahující kombinace znamének, písmen a číslic pro výpočet datumu. Obecně se používá k výpočtu data, jako je datum dokončení, nebo datum pro opakující se úlohu (fronta úloh, deníky, atd...).
+    - Může obsahovat maximálně 32 znaků (znamének, číslic a písmen).
+    - Příklady písmen a jejich významy:
+      - C = Current (aktuální)
+      - D = Day  (den)
+      - W = Week (týden)
+      - WD = WeekDay  (den v týdnu)
+      - M = Month (měsíc)
+      - Q = Quarter (čtvrtletí)
+      - Y = Year (rok)
+    - Příklady použití:
+      | Datum  | DateFormula | Výsledek | Význam |
+      | ------------- | ------------- | ------------- | ------------- |
+      | 20.duben 2022  | CM  | 31.duben 2022 | Konec měsíce |
+      | 20.duben 2022  | -CM  | 1.duben 2022 | Začátek měsíce |
+      | 20.duben 2022 | 1M+CM | 5.květen 2022 | Konec následujícího měsíce |
+      | 20.duben 2022 | CM+D25 | 25.květen 2022 | 25. den následujícího mesíce |
+      | 20.duben 2022 | CM+45D | 14.červen 2022 | 45 dní po konci měsíce |
+      | 20.duben 2022 | -D10 | 10.duben 2022 | Předchozí 10. den |
+      | 20.duben 2022 (Stř) | WD6 | 23.duben 2022 | Další 6. den v týdnu (Sobota) |
+      | 20.duben 2022 | 1Y-CY | 1.leden 2023 | Začátek dalšího roku |
+      | 20.duben 2022 | 1Q+1M+CM | 31.srpen 2022 | Plus čtvrtletí a 1 měsíc (konec měsíce) |
 
 * Užitečné metody pro práci s daty:
   - [CreateDateTime](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/methods-auto/system/system-createdatetime-method)
@@ -104,7 +126,8 @@
       ```al
       NewDate := System.CalcDate(DateExpression: String [, Date: Date])
       ```
-    - Výraz může mít jakoukoli délku a čte se zleva doprava po jednom podvýrazu (SubExpression) za druhým. Syntax je následující:
+    - Výraz může mít jakoukoli délku a čte se zleva doprava po jednom podvýrazu (SubExpression) za druhým.
+    - Syntax je následující:
       ```
       - DateExpression = [<SubExpression>][<SubExpression>][<SubExpression>]...
       - <SubExpression> = [<Sign>]<Term>-<Sign> = +|-
@@ -113,7 +136,8 @@
       - <Unit> = D|WD|W|M|Q|Y  (D=day, WD=weekday, W=week, M=month, Q=quarter, Y= year)
       - <Prefix> = C (C=current)
       ```
-    - Výraz se skládá z 0/1/2/3 podvýrazů. Každý podvýraz obsahuje volitelné znaménko (Sign) a termín (Term). Toto jsou typické příklady termínů:
+    - Výraz se skládá z 0/1/2/3 podvýrazů. Každý podvýraz obsahuje volitelné znaménko (Sign) a termín (Term).
+    - Toto jsou typické příklady termínů:
       ```
       - 30D (30 dní (Day) = <Number><Unit>)
       - WD2 (2. den v týdnu (WeekDay2) = <Unit><Number>)

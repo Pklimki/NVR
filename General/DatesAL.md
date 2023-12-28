@@ -9,10 +9,10 @@
       → ***yyyymmddD*** - ***yyyy*** je rok, ***mm*** je měsíc, ***dd*** je den a pak "***D***", které je nutno zadat.
 
   - [Time](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/methods-auto/time/time-data-type)
-    - **Time** označuje čas v rozmezí od *00:00:00:0000* do *23:59:59:9999*. Nevyplněný čas se specifikuje na 0T.
+    - **Time** označuje čas v rozmezí od *00:00:00.000* do *23:59:59.999*. Nevyplněný čas se specifikuje na 0T.
       
   - [DateTime](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/methods-auto/datetime/datetime-data-type)
-    - **DateTime** označuje datum a čas v rozmezí od *1.ledna 1753 00:00:00:0000* do *31.prosince 9999 23:59:59:9999*.
+    - **DateTime** označuje datum a čas v rozmezí od *1.ledna 1753 00:00:00.000* do *31.prosince 9999 23:59:59.999*.
  
   - [DateFormula](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/methods-auto/dateformula/dateformula-data-type)
     - **DateFormula** označuje vzorec obsahující kombinace znamének, písmen a číslic pro výpočet datumu. Obecně se používá k výpočtu data, jako je datum dokončení, nebo datum pro opakující se úlohu (fronta úloh, deníky, atd...).
@@ -334,3 +334,39 @@
       ```
 
 ## Příklady z praxe:
+# [Task pro Summit](https://navertica.visualstudio.com/Summit%20Trade%20Distribution/_git/95eb1e6e-9c91-4595-a67a-91e3b6d6ccf3/pullrequest/9457?_a=files)
+  -  Zde je vidět procedůra, která měla na starosti zjistit zda existují transfery s vyhovujícími parametry pro zapsání oranžového množství (zde nepodstatné, hlavní je použití fcí a typů pro datumy).
+  -  Hlavním kusem kódu je:
+     ```al
+     TransferHeader.SetRange(SystemCreatedAt, CreateDateTime(CalcDate(SalesReceivablesSetup."NVR SSPM Add Or. Qty Line Int.", Today()), 0T),
+      CreateDateTime(Today(), 0T));
+     ```
+-  Filtrujeme zde na datum vytvoření objednávky transferu (**SystemCreatedAt**) dle zadaného výpočtu DateTime (funkcí **CreateDateTime**). Jak bylo vysvětleno výše, CreateDateTime potřebuje k vytvoření DateTime **Date** a **Time**.
+
+      **Date** získáme takto: **SalesReceivablesSetup."NVR SSPM Add Or. Qty Line Int.", Today()**. Když si to rozebereme, tak zde používáme pole "**NVR SSPM Add Or. Qty Line Int.**", které je typu **DateFormula** (slouží jako pole pro kontrolu objednávek i transferu vytvoření aby bylo menší než zadaná hodnota - např. 30D). A druhá část **Today()** už slouží jen k odpočítání zadané DateFormuly (30D) od dneška. 
+   
+      **Time** je poté takto: 0T. Což stanový čas na 00:00:00.000.
+
+```al
+local procedure GetTransfers(Location: Record Location; SalesLine: Record "Sales Line"; var TransferNo: Code[20]): Boolean
+    var
+        TransferHeader: Record "Transfer Header";
+        SalesReceivablesSetup: Record "Sales & Receivables Setup";
+    begin
+        if TransferDic.Get(Location.Code + '#' + SalesLine."Location Code", TransferNo) then
+            exit(true)
+        else begin
+            SalesReceivablesSetup.SetLoadFields("NVR SSPM Add Or. Qty Line Int.");
+            SalesReceivablesSetup.Get();
+            TransferHeader.SetRange("Transfer-from Code", Location.Code);
+            TransferHeader.SetRange("Transfer-to Code", SalesLine."Location Code");
+            TransferHeader.SetRange(SystemCreatedAt, CreateDateTime(CalcDate(SalesReceivablesSetup."NVR SSPM Add Or. Qty Line Int.", Today()), 0T),
+           CreateDateTime(Today(), 0T));
+            if TransferHeader.FindFirst() then begin
+                TransferNo := TransferHeader."No.";
+                exit(true);
+            end else
+                exit(false);
+        end;
+    end;
+```

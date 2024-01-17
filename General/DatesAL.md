@@ -28,9 +28,9 @@
     - Příklady použití:
       | Datum  | DateFormula | Výsledek | Význam |
       | ------------- | ------------- | ------------- | ------------- |
-      | 20.duben 2022  | CM  | 31.duben 2022 | Konec měsíce |
+      | 20.duben 2022  | CM  | 30.duben 2022 | Konec měsíce |
       | 20.duben 2022  | -CM  | 1.duben 2022 | Začátek měsíce |
-      | 20.duben 2022 | 1M+CM | 5.květen 2022 | Konec následujícího měsíce |
+      | 20.duben 2022 | 1M+CM | 31.květen 2022 | Konec následujícího měsíce |
       | 20.duben 2022 | CM+D25 | 25.květen 2022 | 25. den následujícího mesíce |
       | 20.duben 2022 | CM+45D | 14.červen 2022 | 45 dní po konci měsíce |
       | 20.duben 2022 | -D10 | 10.duben 2022 | Předchozí 10. den |
@@ -158,9 +158,9 @@
           Expr2Txt: Label 'The expression %4 returns %5\\';
           Expr3Txt: Label 'The expression %6 returns %7\\';
       begin
-          Expr1 := '<CQ+1M-10D>'  // Current Quarter + 1 Month - 10 Days
-          Expr2 := '<-WD2>'       // The last WeekDay no.2 (last Thuesday)
-          Expr3 := '<CM+30D>'     // Current Month + 30 Days
+          Expr1 := '<CQ+1M-10D>';  // Current Quarter + 1 Month - 10 Days
+          Expr2 := '<-WD2>';       // The last WeekDay no.2 (last Thuesday)
+          Expr3 := '<CM+30D>';     // Current Month + 30 Days
           RefDate := Today;
           Date1 := CalcDate(Expr1, RefDate);
           Date2 := CalcDate(Expr2, RefDate);

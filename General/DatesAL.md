@@ -64,7 +64,7 @@
     - Příklad použití:
       ```al
       var
-          DateMsg: Label 'The current date is: %1';
+          DateMsg: Label 'The current date is: %1', Comment = '%1 = TodayDate';
           TodayDate: Date;
       begin
           TodayDate := Today;
@@ -80,7 +80,7 @@
     - Příklad použití:
       ```al
       var
-          TimeMsg: Label 'The current time is: %1';
+          TimeMsg: Label 'The current time is: %1', Comment = '%1 = CurrentTime';
           CurrentTime: Time;
       begin
           CurrentTime := Time;
@@ -96,7 +96,7 @@
     - Příklad použití:
       ```al
       var
-          TimeMsg: Label 'The current time is: %1';
+          TimeMsg: Label 'The current time is: %1'. Comment = '%1 = CurrentTime';
           CurrentTime: Time;
       begin
           CurrentTime := Time;
@@ -113,7 +113,7 @@
     - Příklad použití:
       ```al
       var
-          DateMsg: Label 'The work date is: %1';
+          DateMsg: Label 'The work date is: %1', Comment = '%1 = WorkDate';
           WorkDate: Date;
       begin
           WorkDate := WorkDate;
@@ -153,10 +153,10 @@
           Date1: Date;
           Date2: Date;
           Date3: Date;
-          RefDateTxt: Label 'The reference date is: %1\\';
-          Expr1Txt: Label 'The expression %2 returns %3\\';
-          Expr2Txt: Label 'The expression %4 returns %5\\';
-          Expr3Txt: Label 'The expression %6 returns %7\\';
+          RefDateTxt: Label 'The reference date is: %1\\', Comment = '%1 = RefDate';
+          Expr1Txt: Label 'The expression %2 returns %3\\', Comment = '%2 = Expr1, %3 = Date1';
+          Expr2Txt: Label 'The expression %4 returns %5\\', Comment = '%4 = Expr2, %5 = Date2';
+          Expr3Txt: Label 'The expression %6 returns %7\\', Comment = '%6 = Expr3, %7 = Date3';
       begin
           Expr1 := '<CQ+1M-10D>';  // Current Quarter + 1 Month - 10 Days
           Expr2 := '<-WD2>';       // The last WeekDay no.2 (last Thuesday)
@@ -190,7 +190,7 @@
           Day: Integer;
           Month: Integer;
           Year: Integer;
-          DateMsg: Label 'Today is a day %1 of month %2 of the year %3';
+          DateMsg: Label 'Today is a day %1 of month %2 of the year %3', Comment = '%1 = Day, %2 = Month, %3 = Year';
       begin
           InputDate := Today;
           Day := Date2DMY(InputDate, 1);
@@ -218,13 +218,14 @@
           DayOfWeek: Integer;
           WeekNumber: Integer;
           Year: Integer;
-          DateMsg: Label 'The date %1 corresponds to: \\The day of the week: %2 \\The week number: %3 \\ The year: %4';
+          DateMsg: Label 'The date %1 corresponds to: \\The day of the week: %2 \\The week number: %3 \\ The year: %4', 
+          Comment = '%1 = InputDate, %2 = DayOfWeek, %3 = WeekNumber, %4 = Year';
       begin
           InputDate := Today;
           DayOfWeek := Date2DWY(InputDate, 1);
           WeekNumber := Date2DWY(InputDate, 2);
           Year := Date2DWY(InputDate,3);
-          Message(DateMsg, DayOfWeek, WeekNumber, Year);
+          Message(DateMsg, InputDate, DayOfWeek, WeekNumber, Year);
       end;
       /** Tento kod poté v BC vrátí message okno se zprávou popisující datum (např.
       The date 12/03/20 corresponds to:
@@ -250,7 +251,7 @@
           Month: Integer;
           Year: Integer;
           OutputDate: Date;
-          DateMsg: Label 'Day number %1, month number %2, and year number %3 corresponds to the date %4. ';
+          DateMsg: Label 'Day number %1, month number %2, and year number %3 corresponds to the date %4.', Comment = '%1 = Day, %2 = Month, %3 = Year, 4% = OutputDate';
       begin
           Day := 3;
           Month := 12;
@@ -279,7 +280,7 @@
           Week: Integer;
           Year: Integer;
           OutputDate: Date;
-          DateMsg: Label 'Day %1 of week %2 in the year %3 corresponds to the date %4.';
+          DateMsg: Label 'Day %1 of week %2 in the year %3 corresponds to the date %4.', Comment = '%1 = DayOfWeek, %2 = Week, %3 = Year, %4 = OutputDate';
       begin
           DayOfWeek := 4;
           Week := 49;
@@ -303,7 +304,7 @@
       var
           CurrDateTime: DateTime;
           OutputTime: Time;
-          TimeMsg: Label 'CurrDateTime is %1, the time part of CurrDateTime is %2.';
+          TimeMsg: Label 'CurrDateTime is %1, the time part of CurrDateTime is %2.', Comment = '%1 = CurrDateTime, %2 = OutputTime';
       begin
           CurrDateTime := CurrentDateTime;
           OuputTime := DT2Time(CurrDateTime);
